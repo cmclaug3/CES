@@ -12,7 +12,8 @@
 <p>welcome to the CES employee portal {{ user.first_name }} {{ user.last_name }}</p>
 <p>{{ user.get_full_name }}</p>
 
-<p>are you staff?? {{ user.is_staff }}</p>
+<p>are you staff: {{ user.is_staff }}</p>
+<p>are you superuser: {{ user.is_admin }}</p>
 
 
 

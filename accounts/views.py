@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from accounts.forms import PreSetAuthorizedUserForm, SetNewUserPasswordForm
-from accounts.models import PreSetAuthorizedUser, User
+from accounts.models import PreSetAuthorizedUser, User, Employee
 from django.contrib import messages
 from django.urls import reverse
+from django.db import IntegrityError
 
 
 
@@ -55,6 +56,10 @@ class RegisterAuthorizedUserView(View):
             messages.add_message(request, messages.ERROR, 'Incorrect Credentials, cannot register')
             return redirect(reverse('home'))
 
+        except IntegrityError:
+            messages.add_message(request, messages.ERROR, 'You have already registered, please log in normally')
+            return redirect(reverse('home'))
+
 
 
 
@@ -90,6 +95,7 @@ class SetNewUserPasswordView(View):
 
         new_employee = Employee.objects.create(user=new_user)
         new_employee.save()
+
         messages.add_message(request, messages.SUCCESS, 'password setup you can now log in normally from now on')
         return redirect(reverse('home'))
 

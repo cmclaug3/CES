@@ -19,14 +19,28 @@
   {% endif %}
 
 
+
+  <div>
+    <strong>Menu:</strong>
+    <ul>
+<p><a href="{% url 'password_reset' %}">Reset your password</a></p>
+<p><a href="{% url 'login' %}">Login</a></p>
+<p><a href="{% url 'register_user' %}">First Time Registration</a></p>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+
   {% block content %} {% endblock content %}
 
 {% endblock body %}
 
 {% block extra_body %}
-<p><a href="{% url 'password_reset' %}">reset your password</a></p>
-<p><a href="{% url 'login' %}">login</a></p>
-<p><a href="{% url 'register_user' %}">First Time Registration</a></p>
 
 {% endblock extra_body %}
 </body>

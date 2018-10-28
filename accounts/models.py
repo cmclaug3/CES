@@ -25,7 +25,7 @@ class UserManager(BaseUserManager):
         user_obj.save(using=self._db)
         return user_obj
 
-    def create_staff_user(self, email, password=None):
+    def create_staff_user(self, email, first_name='', last_name='', password=None):
         user = self.create_user(
             email,
             password=password,
@@ -35,10 +35,12 @@ class UserManager(BaseUserManager):
         )
         return user
 
-    def create_superuser(self, email, password=None):
+    def create_superuser(self, email, first_name='', last_name='', password=None):
         user = self.create_user(
             email,
             password=password,
+            first_name=first_name,
+            last_name=last_name,
             is_staff=True,
             is_admin=True
         )
@@ -93,6 +95,16 @@ class User(AbstractBaseUser):
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pin = models.CharField(max_length=6, default=0000, blank=True, null=True)
+
+    def get_full_name(self):
+        return self.user.get_full_name()
+
+    def get_short_name(self):
+        return self.user.get_short_name()
+
+    def __str__(self):
+        return self.get_full_name()
+
 
 
 

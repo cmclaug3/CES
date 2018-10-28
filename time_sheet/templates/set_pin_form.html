@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Set/Change Pin</h1>
+<form method="post">
+  {% csrf_token %}
+
+    <p>{{ form.pin1.label_tag }} {{ form.pin1 }}</p>
+    <p>{{ form.pin2.label_tag }} {{ form.pin2 }}</p>
+
+    <br>
+    <p>* This pin you have chosen will act as your signatures on all CES paperwork. Check the box to confirm.</p>
+
+    <p>{{ form.agree_to_use_as_signature.label_tag }} {{ form.agree_to_use_as_signature }}</p>
+    <br><br>
+
+  <button type="submit">Set/Change Pin</button>
+</form>
+
+{% endblock content %}
