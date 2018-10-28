@@ -94,7 +94,7 @@ class User(AbstractBaseUser):
 
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pin = models.CharField(max_length=6, default=0000, blank=True, null=True)
+    pin = models.CharField(max_length=15, default=0000, blank=True, null=True)
 
     def get_full_name(self):
         return self.user.get_full_name()
