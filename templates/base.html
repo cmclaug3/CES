@@ -28,7 +28,7 @@
 
 </head>
 
-
+{% load static %}
 
 
 
@@ -51,7 +51,7 @@
                     <!--The next line sends the user back to the home page-->
                     <a class="navbar-brand" href="{%url 'home' %}">
                         <!--Insert the file name of your brand image below after the 'img'-->
-                         <img class="img-responsive" src="/static/bootstrap/img/INSERT IMAGE OF BRAND HERE">
+                         <img class="img-responsive" src="/static/images/ces_logo_image.png" height="60" width="65">
                     </a>
                 </div>
 
@@ -67,6 +67,9 @@
                         </li>
                       <li>
                             <a href="{% url 'set_pin' %}">Set/Change Pin</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'jobs' %}">Jobs</a>
                         </li>
                     </ul>
                 </div>
@@ -84,21 +87,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 <body>
 {% block body %}
+
+<br><br><br>
 
   {% if messages %}
     <div>
@@ -110,6 +102,8 @@
       </ul>
     </div>
   {% endif %}
+
+<i><h5>Logged in as {{ user.get_full_name }}</h5></i>
 
   <!--<div>-->
     <!--<strong>Menu:</strong>-->
@@ -126,7 +120,7 @@
     <!--</ul>-->
   <!--</div>-->
 
-<br><br><br>
+
 
   {% block content %}{% endblock content %}
 {% endblock body %}

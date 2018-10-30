@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>{{ job.name }}</h1>
+
+<p><i>Job Number:</i> <b>{{ job.job_num }}</b></p>
+
+<p><i>Created By:</i> <b>{{ job.created_by }}</b></p>
+
+<p><i>Type:</i> <b>{{ job.type }}</b></p>
+
+<p><i>Completed?:</i> <b>{{ job.completed }}</b></p>
+
+
+
+<br>
+
+<!--THIS DAM BUTTON DOESNT WORK-->
+<!--<input type="submit" name="add_a_timesheet" value="Add Timesheet"/>-->
+
+<a href="{% url 'add_workday' job_id=job.id %}">Add Work Day</a>
+
+
+{% endblock content %}

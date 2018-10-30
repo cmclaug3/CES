@@ -44,6 +44,9 @@ class UserManager(BaseUserManager):
             is_staff=True,
             is_admin=True
         )
+        super_employee = Employee.objects.create(user=user)
+        super_employee.save()
+
         return user
 
 

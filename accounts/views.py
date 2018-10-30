@@ -93,8 +93,10 @@ class SetNewUserPasswordView(View):
             return redirect(reverse('set_new_user_password', kwargs={'new_user_id': new_user.id}))
 
 
-        new_employee = Employee.objects.create(user=new_user)
-        new_employee.save()
+        if new_user.is_admin == False:
+
+            new_employee = Employee.objects.create(user=new_user)
+            new_employee.save()
 
         messages.add_message(request, messages.SUCCESS, 'password setup you can now log in normally from now on')
         return redirect(reverse('home'))

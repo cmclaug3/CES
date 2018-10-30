@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
 
+
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
 
-    Hi {{ user.email }}
 
+<h1>HOMEPAGE</h1>
 
-<h2>HOMEPAGE</h2>
-
-<p>welcome to the CES employee portal {{ user.first_name }} {{ user.last_name }}</p>
+<p>welcome to the CES employee portal {{ user.get_short_name }}</p>
 <p>{{ user.get_full_name }}</p>
 
 <p>are you staff: {{ user.is_staff }}</p>

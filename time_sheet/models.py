@@ -11,7 +11,7 @@ EMPLOYEEWORK_LUNCH_CHOICES = (
 )
 
 class EmployeeWork(models.Model):
-    employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     lunch = models.CharField(max_length=20, choices=EMPLOYEEWORK_LUNCH_CHOICES)
@@ -30,19 +30,18 @@ class Receipt(models.Model):
 
 
 TIMESHEET_STATUS_CHOICES = (
-    ('incomplete', 'Incomplete'),
-    ('pending', 'Pending'),
-    ('approved', 'Approved'),
-    ('complete', 'Complete'),
+    ('Incomplete', 'Incomplete'),
+    ('Pending', 'Pending'),
+    ('Approved', 'Approved'),
+    ('Complete', 'Complete'),
 )
 
 class TimeSheet(models.Model):
-    date = models.DateField()
-    supervisor = models.ForeignKey(Employee, on_delete=models.CASCADE)
+    supervisor = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     supervisor_sig = models.CharField(max_length=50)
     status = models.CharField(max_length=20, choices=TIMESHEET_STATUS_CHOICES)
-    employee_works = models.ManyToManyField(EmployeeWork)
-    receipts = models.ManyToManyField(Receipt)
+    employee_works = models.ManyToManyField(EmployeeWork, blank=True, null=True)
+    receipts = models.ManyToManyField(Receipt, blank=True, null=True)
 
     def __str__(self):
         return self.date
@@ -51,9 +50,10 @@ class TimeSheet(models.Model):
 
 
 class WorkDay(models.Model):
+    date = models.DateField()
     location = models.CharField(max_length=150)
     completed = models.BooleanField()
-    time_sheet = models.ForeignKey(TimeSheet, on_delete=models.CASCADE)
+    time_sheet = models.ForeignKey(TimeSheet, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.date
@@ -61,16 +61,21 @@ class WorkDay(models.Model):
 
 
 JOB_TYPE_CHOICES = (
-    ('single', 'Single'),
-    ('ongoing', 'Ongoing'),
+    ('Single', 'Single'),
+    ('Ongoing', 'Ongoing'),
+    ('ER', 'ER'),
 )
 
 class Job(models.Model):
+    location = models.CharField(max_length=150) # ADDED
     name = models.CharField(max_length=100)
-    job_num = models.CharField(max_length=20)
+    job_num = models.CharField(max_length=20, unique=True)
+    created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     type = models.CharField(max_length=20, choices=JOB_TYPE_CHOICES)
     completed = models.BooleanField()
-    workdays = models.ManyToManyField(WorkDay)
+    created_date = models.DateField(auto_now_add=True, blank=True, null=True)
+    completed_date = models.DateField(blank=True, null=True)
+    workdays = models.ManyToManyField(WorkDay, blank=True, null=True)
 
     def __str__(self):
         return '{} {}'.format(self.name, self.job_num)

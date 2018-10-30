@@ -48,7 +48,7 @@
                     <!--The next line sends the user back to the home page-->
                     <a class="navbar-brand" href="{%url 'home' %}">
                         <!--Insert the file name of your brand image below after the 'img'-->
-                         <img class="img-responsive" src="/static/bootstrap/img/INSERT IMAGE OF BRAND HERE">
+                         <img class="img-responsive" src="/static/images/ces_logo_image.png" height="60" width="65">
                     </a>
                 </div>
 
@@ -97,6 +97,8 @@
 
 {% block body %}
 
+<br><br><br>
+
   {% if messages %}
     <div>
       <strong>Messages:</strong>
@@ -120,10 +122,6 @@
   <!--</div>-->
 
 
-
-
-
-<br><br><br>
 
 
   {% block content %} {% endblock content %}

@@ -3,7 +3,11 @@ from django.views import View
 from django.contrib import messages
 from django.urls import reverse
 from .forms import SetPinForm
+
 from accounts.models import Employee
+from time_sheet.models import Job
+
+from .forms import AddTimesheetForm, WorkDayForm
 
 
 
@@ -57,4 +61,69 @@ class SetPinView(View):
         else:
             messages.add_message(request, messages.ERROR, 'Pins must be all numerical characters try again')
             return redirect(reverse('set_pin'))
+
+
+
+class JobsView(View):
+    def get(self, request):
+        context = {
+            'jobs': Job.objects.all()
+        }
+        return render(request, 'jobs.html', context)
+
+
+
+class SingleJobView(View):
+    def get(self, request, job_id):
+        context = {
+            'job': Job.objects.get(id=job_id)
+        }
+
+
+
+    # THIS DOESNT WORK??
+        # if request.POST.get('add_a_timesheet'):
+        #     return redirect((reverse('add_timesheet', kwargs={'job_id': Job.objects.get(id=job_id)})))
+
+        return render(request, 'single_job.html', context)
+
+
+
+class AddTimeSheetView(View):
+    def get(self, request, job_id):
+        context = {
+            'form': AddTimesheetForm(),
+            'job': Job.objects.get(id=job_id)
+        }
+        return render(request, 'add_timesheet.html', context)
+
+    def post(self, request, job_id):
+        form = AddTimesheetForm(request.POST)
+        if not form.is_valid():
+            context = {
+                'form': form
+            }
+            return render(request, 'add_timesheet.html', context)
+
+
+class AddWorkDayView(View):
+    def get(self, request, job_id):
+        context = {
+            'form': WorkDayForm(),
+            'job': Job.objects.get(id=job_id)
+        }
+        return render(request, 'add_workday.html', context)
+
+    def post(self, request, job_id):
+        form = WorkDayForm(request.POST)
+        if not form.is_valid():
+            context = {
+                'form': form
+            }
+            return render(request, 'add_workday.html', context)
+
+
+
+
+
 
