@@ -7,9 +7,15 @@ from .forms import SetPinForm
 from accounts.models import Employee
 from time_sheet.models import Job
 
-from .forms import AddTimesheetForm, WorkDayForm
+from .forms import AddTimesheetForm, EmployeeWorkForm
 
 
+
+
+
+class HelpView(View):
+    def get(self, request):
+        return render(request, 'help.html')
 
 
 
@@ -79,8 +85,6 @@ class SingleJobView(View):
             'job': Job.objects.get(id=job_id)
         }
 
-
-
     # THIS DOESNT WORK??
         # if request.POST.get('add_a_timesheet'):
         #     return redirect((reverse('add_timesheet', kwargs={'job_id': Job.objects.get(id=job_id)})))
@@ -89,15 +93,56 @@ class SingleJobView(View):
 
 
 
+# class AddWorkDayView(View):
+#     def get(self, request, job_id):
+#         data = {
+#             'address': Job.objects.get(id=job_id).address
+#         }
+#         job = Job.objects.get(id=job_id)
+#         context = {
+#             'form': WorkDayForm(initial=data),
+#             'job': job,
+#             'job_workdays': WorkDay.objects.filter(job__id=job_id)
+#         }
+#         return render(request, 'add_workday.html', context)
+#
+#     def post(self, request, job_id):
+#         form = WorkDayForm(request.POST)
+#         job = Job.objects.get(id=job_id)
+#         if not form.is_valid():
+#             context = {
+#                 'form': form
+#             }
+#             return render(request, 'add_workday.html', context)
+#
+#         workday = form.save(commit=False)
+#         workday.job = job
+#         workday.save()
+#
+#         return redirect(reverse('add_timesheet', kwargs={'workday_id': workday.id}))
+
+
+
+
+
+
+
 class AddTimeSheetView(View):
     def get(self, request, job_id):
+        job = Job.objects.get(id=job_id)
+        data = {
+            'job': job,
+            'address': job.address
+        }
         context = {
-            'form': AddTimesheetForm(),
-            'job': Job.objects.get(id=job_id)
+            'form': AddTimesheetForm(initial=data),
+            'job': job,
+
         }
         return render(request, 'add_timesheet.html', context)
 
     def post(self, request, job_id):
+        job = Job.objects.get(id=job_id)
         form = AddTimesheetForm(request.POST)
         if not form.is_valid():
             context = {
@@ -105,23 +150,21 @@ class AddTimeSheetView(View):
             }
             return render(request, 'add_timesheet.html', context)
 
+        timesheet = form.save(commit=False)
+        timesheet.save()
+        return redirect(reverse('add_employee_work', kwargs={'timesheet_id': timesheet.id}))
 
-class AddWorkDayView(View):
-    def get(self, request, job_id):
+
+
+
+
+class AddEmployeeWork(View):
+    def get(self, request, timesheet_id):
+        form = EmployeeWorkForm()
         context = {
-            'form': WorkDayForm(),
-            'job': Job.objects.get(id=job_id)
+            'form': form
         }
-        return render(request, 'add_workday.html', context)
-
-    def post(self, request, job_id):
-        form = WorkDayForm(request.POST)
-        if not form.is_valid():
-            context = {
-                'form': form
-            }
-            return render(request, 'add_workday.html', context)
-
+        return render(request, 'add_employee_work.html', context)
 
 
 

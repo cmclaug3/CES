@@ -45,6 +45,8 @@ class UserManager(BaseUserManager):
             is_admin=True
         )
         super_employee = Employee.objects.create(user=user)
+        super_employee.user.first_name = 'Corey'
+        super_employee.user.last_name = 'Mclaughlin'
         super_employee.save()
 
         return user

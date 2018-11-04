@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1>Add Time Sheet for <i>{{ job.name }}</i></h1>
+<h1>Add Time Sheet on <i>{{ job.date }}</i> - <i>{{ job.name }}</i></h1>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Add</button>
+  <button type="submit">Start</button>
 </form>
 
 {% endblock content %}

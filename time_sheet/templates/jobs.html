@@ -6,32 +6,38 @@
 
 <br>
 
-<table style="width:80%">
-    <tr>
-        <th>Job Name</th>
-        <th>Job Number</th>
-        <th>Created</th>
-        <th>Type</th>
-        <th>Completed</th>
-    </tr>
+{% if jobs %}
 
-{% for job in jobs %}
-
+    <table style="width:80%">
         <tr>
-            <td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>
-            <td>{{ job.job_num }}</td>
-            <td>{{ job.created_by.get_full_name }}</td>
-            <td>{{ job.type }}</td>
-            <td>{{ job.completed }}</td>
+            <th>Job Name</th>
+            <th>Job Number</th>
+            <th>Created</th>
+            <th>Type</th>
+            <th>Completed</th>
         </tr>
+
+    {% for job in jobs %}
+
+            <tr>
+                <td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>
+                <td>{{ job.job_num }}</td>
+                <td>{{ job.created_by.get_full_name }}</td>
+                <td>{{ job.type }}</td>
+                <td>{{ job.completed }}</td>
+            </tr>
 
 {% endfor %}
 
-</table>
+    </table>
 
+{% else %}
 
+    <h5>No jobs added yet...</h5>
+
+{% endif %}
 
 {% endblock content %}
 
 
-<a href="{% url 'jobs' %}">Jobs</a>
+<!--<a href="{% url 'jobs' %}">Jobs</a>-->

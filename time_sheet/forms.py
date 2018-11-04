@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import TimeSheet, WorkDay
+from .models import TimeSheet, EmployeeWork
 
 
 
@@ -12,20 +12,21 @@ class SetPinForm(forms.Form):
 
 
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class AddTimesheetForm(ModelForm):
     class Meta:
         model = TimeSheet
-        fields = '__all__'
+        fields = ['job', 'date', 'address', 'supervisor']
+        widgets = {
+            'date': DateInput()
+        }
 
 
 
-class WorkDayForm(ModelForm):
+class EmployeeWorkForm(ModelForm):
     class Meta:
-        model = WorkDay
+        model = EmployeeWork
         fields = '__all__'
 
-
-
-# location
-# completed
-# timesheet

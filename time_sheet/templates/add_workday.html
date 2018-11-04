@@ -6,7 +6,28 @@
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Add</button>
+  <button type="submit">Add Workspace/Begin Timesheet</button>
 </form>
 
+
+
+
+<!--NOT WORKING-->
+<!--<input type="submit" name="add_a_timesheet" value="Add Timesheet"/>-->
+
+
+<br><br><br>
+{% for job_workday in job_workdays %}
+
+Workday on {{ job_workday.date }} for {{ job.name }}
+
+<br>
+
+{% endfor %}
+
+
+
 {% endblock content %}
+
+
+<a href="{% url 'add_timesheet' workday_id=workday.id %}">Add Time Sheet</a>

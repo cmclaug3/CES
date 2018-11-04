@@ -93,6 +93,7 @@ class SetNewUserPasswordView(View):
             return redirect(reverse('set_new_user_password', kwargs={'new_user_id': new_user.id}))
 
 
+        # SAFETY NET TO MAKE NEW EMPLOYEE FROM NEW USER DATA
         if new_user.is_admin == False:
 
             new_employee = Employee.objects.create(user=new_user)
