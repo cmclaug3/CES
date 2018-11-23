@@ -3,11 +3,12 @@ from django.views import View
 from django.contrib import messages
 from django.urls import reverse
 from .forms import SetPinForm
+from django.forms import formset_factory, modelformset_factory
 
 from accounts.models import Employee
-from time_sheet.models import Job
+from time_sheet.models import Job, TimeSheet, EmployeeWork
 
-from .forms import AddTimesheetForm, EmployeeWorkForm
+from .forms import AddTimesheetForm, EmployeeWorkFormset
 
 
 
@@ -151,6 +152,7 @@ class AddTimeSheetView(View):
             return render(request, 'add_timesheet.html', context)
 
         timesheet = form.save(commit=False)
+        timesheet.job = job
         timesheet.save()
         return redirect(reverse('add_employee_work', kwargs={'timesheet_id': timesheet.id}))
 
@@ -160,13 +162,60 @@ class AddTimeSheetView(View):
 
 class AddEmployeeWork(View):
     def get(self, request, timesheet_id):
-        form = EmployeeWorkForm()
+        form_set = EmployeeWorkFormset(queryset=EmployeeWork.objects.none())
+        timesheet = TimeSheet.objects.get(id=timesheet_id)
+
         context = {
-            'form': form
+            'form_set': form_set,
+            'timesheet': timesheet,
         }
+
+        # if request.GET.get('more_employees'):
+        #     context['more_employees'] = True
+        #
+        # employees = request.GET.get('number_employees')
+
         return render(request, 'add_employee_work.html', context)
 
+    def post(self, request, timesheet_id):
+        form_set = EmployeeWorkFormset(request.POST)
+        timesheet = TimeSheet.objects.get(id=timesheet_id)
+        for form in form_set:
+            if not form.is_valid():
+                context = {
+                    'form_set': EmployeeWorkFormset(queryset=EmployeeWork.objects.none()),
+                    'timesheet': timesheet,
+                }
+                print('something is wrong, form not valid')
+                return render(request, 'add_employee_work.html', context)
+            employee_work = form.save(commit=False)
+            employee_work.time_sheet = timesheet
+            employee_work.save()
+        messages.add_message(request, messages.SUCCESS, 'You have added an employee work')
+        return redirect(reverse('home'))
 
 
 
 
+
+"""
+
+THINGS TO DO
+
+    figure out employee_work datetime format
+    * get fixtures up
+    home page (what will it show)
+    form_set automation and submission thinking
+    model methods
+    
+    model managers
+    
+    signals
+    
+    CSS/JAVASCRIPT
+    
+    
+
+
+
+"""

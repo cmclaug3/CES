@@ -1,0 +1,195 @@
+[
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$T5MWF5ehNNsY$0ipvHijpjxaIYaYsR3xFSRopLQumkZGIkdlhJj+SWME=",
+        "last_login": "2018-11-05T21:35:43.923Z",
+        "email": "mclaughlin848@gmail.com",
+        "first_name": "Corey",
+        "last_name": "Mclaughlin",
+        "time_stamp": "2018-11-04T01:48:18.845Z",
+        "is_active": true,
+        "is_staff": true,
+        "is_admin": true
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$GWoxDSYec49d$eX32aQQt0hjdYBLtIG7W47Wn2cFWAYVSDtfHcp5Ch9w=",
+        "last_login": null,
+        "email": "shellydeven@gmail.com",
+        "first_name": "Shelly",
+        "last_name": "Deven",
+        "time_stamp": "2018-11-04T01:57:41.093Z",
+        "is_active": true,
+        "is_staff": true,
+        "is_admin": false
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$F7LQfFiBa5yj$QKZmDPqzHIajz5EGQsIHImu7v6w6b3xwLIQFKqav16k=",
+        "last_login": null,
+        "email": "chelseamclaughlin@gmail.com",
+        "first_name": "Chelsea",
+        "last_name": "Mclaughlin",
+        "time_stamp": "2018-11-04T01:58:01.187Z",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$2bWJpeIbmAnZ$NlDZgYW/ORjHgwvIqhuZ6MGjwQ5pHpSgLT6lNERdqqQ=",
+        "last_login": "2018-11-05T04:39:40.021Z",
+        "email": "tylerdeven@gmail.com",
+        "first_name": "Tyler",
+        "last_name": "Deven",
+        "time_stamp": "2018-11-04T01:58:15.353Z",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$7XyVzQUTohp5$rGBZwffbPPruvsQqH8TNSzalV6wbOpmuDrkUDxTSk1M=",
+        "last_login": null,
+        "email": "markdeven@gmail.com",
+        "first_name": "Mark",
+        "last_name": "Deven",
+        "time_stamp": "2018-11-04T01:58:39.892Z",
+        "is_active": true,
+        "is_staff": true,
+        "is_admin": false
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$1LtT7n7lBV4a$lKjuMWyyhBMCZfFLLUeO814LEQOh/c6pfSssuRfr7v8=",
+        "last_login": null,
+        "email": "masoncote@gmail.com",
+        "first_name": "Mason",
+        "last_name": "Cote",
+        "time_stamp": "2018-11-04T01:58:56.953Z",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "pin": "0"
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "pin": "0"
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "pin": "0"
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "pin": "14141144"
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "pin": "0"
+    }
+},
+{
+    "model": "accounts.employee",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "pin": "0"
+    }
+},
+{
+    "model": "accounts.presetauthorizeduser",
+    "pk": 1,
+    "fields": {
+        "first_name": "Shelly",
+        "last_name": "Deven",
+        "email": "shellydeven@gmail.com",
+        "code": "12345654321",
+        "type": "admin"
+    }
+},
+{
+    "model": "accounts.presetauthorizeduser",
+    "pk": 2,
+    "fields": {
+        "first_name": "Chelsea",
+        "last_name": "Mclaughlin",
+        "email": "chelseamclaughlin@gmail.com",
+        "code": "12345654321",
+        "type": "employee"
+    }
+},
+{
+    "model": "accounts.presetauthorizeduser",
+    "pk": 3,
+    "fields": {
+        "first_name": "Tyler",
+        "last_name": "Deven",
+        "email": "tylerdeven@gmail.com",
+        "code": "12345654321",
+        "type": "employee"
+    }
+},
+{
+    "model": "accounts.presetauthorizeduser",
+    "pk": 4,
+    "fields": {
+        "first_name": "Mark",
+        "last_name": "Deven",
+        "email": "markdeven@gmail.com",
+        "code": "12345654321",
+        "type": "admin"
+    }
+},
+{
+    "model": "accounts.presetauthorizeduser",
+    "pk": 5,
+    "fields": {
+        "first_name": "Mason",
+        "last_name": "Cote",
+        "email": "masoncote@gmail.com",
+        "code": "12345654321",
+        "type": "employee"
+    }
+}
+]

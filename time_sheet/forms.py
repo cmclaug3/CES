@@ -1,7 +1,9 @@
 from django import forms
 from django.forms import ModelForm
+from django.forms.models import modelformset_factory
 
 from .models import TimeSheet, EmployeeWork
+from datetime import datetime
 
 
 
@@ -25,8 +27,21 @@ class AddTimesheetForm(ModelForm):
 
 
 
-class EmployeeWorkForm(ModelForm):
-    class Meta:
-        model = EmployeeWork
-        fields = '__all__'
+# class EmployeeDateInput(forms.TimeInput):
 
+
+
+class TimeInput(forms.TimeInput):
+    input_type = 'time'
+
+
+# class EmployeeWorkForm(ModelForm):
+#     class Meta:
+#         model = EmployeeWork
+#         fields = ['employee', 'start_time', 'end_time', 'lunch', 'injured', 'comment']
+#         widgets = {
+#             'start_time': TimeInput(format='%H:%M'),
+#             'end_time': TimeInput(format='%H:%M')
+#         }
+
+EmployeeWorkFormset = modelformset_factory(EmployeeWork, exclude=(), extra=3)

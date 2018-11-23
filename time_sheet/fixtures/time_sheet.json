@@ -1,0 +1,250 @@
+[
+{
+    "model": "time_sheet.job",
+    "pk": 1,
+    "fields": {
+        "address": "14378 William White Blvd. Pueblo, CO 80324",
+        "name": "UTC",
+        "job_num": "18-8027",
+        "created_by": 1,
+        "type": "Ongoing",
+        "completed": false,
+        "created_date": "2018-11-04",
+        "completed_date": null
+    }
+},
+{
+    "model": "time_sheet.job",
+    "pk": 2,
+    "fields": {
+        "address": "354 4th St. Denver, CO 80032",
+        "name": "CCOD DT",
+        "job_num": "18-3003",
+        "created_by": 1,
+        "type": "Ongoing",
+        "completed": false,
+        "created_date": "2018-11-04",
+        "completed_date": null
+    }
+},
+{
+    "model": "time_sheet.job",
+    "pk": 3,
+    "fields": {
+        "address": "5452 Huron St. Denver, CO 80064",
+        "name": "CCOD Rivers",
+        "job_num": "18-3004",
+        "created_by": 2,
+        "type": "Ongoing",
+        "completed": false,
+        "created_date": "2018-11-04",
+        "completed_date": null
+    }
+},
+{
+    "model": "time_sheet.job",
+    "pk": 4,
+    "fields": {
+        "address": "786 Ivy Ct. Northglenn, CO 80048",
+        "name": "Jim Bernstein",
+        "job_num": "18-3068",
+        "created_by": 4,
+        "type": "ER",
+        "completed": false,
+        "created_date": "2018-11-04",
+        "completed_date": null
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 1,
+    "fields": {
+        "job": 1,
+        "date": "2018-11-04",
+        "address": "14378 William White Blvd. Pueblo, CO 80324",
+        "supervisor": 2,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 2,
+    "fields": {
+        "job": 1,
+        "date": "2018-11-04",
+        "address": "14378 William White Blvd. Pueblo, CO 80324",
+        "supervisor": 1,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 3,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 4,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 5,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 6,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 7,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 8,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 9,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 10,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 11,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 12,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-04",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 13,
+    "fields": {
+        "job": 2,
+        "date": "2018-11-05",
+        "address": "354 4th St. Denver, CO 80032",
+        "supervisor": 1,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 14,
+    "fields": {
+        "job": 3,
+        "date": "2018-11-05",
+        "address": "5452 Huron St. Denver, CO 80064",
+        "supervisor": 1,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 15,
+    "fields": {
+        "job": 4,
+        "date": "2018-11-05",
+        "address": "786 Ivy Ct. Northglenn, CO 80048",
+        "supervisor": 4,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+},
+{
+    "model": "time_sheet.timesheet",
+    "pk": 16,
+    "fields": {
+        "job": 3,
+        "date": "2018-11-05",
+        "address": "5452 Huron St. Denver, CO 80064",
+        "supervisor": 3,
+        "supervisor_sig": "",
+        "status": "Incomplete"
+    }
+}
+]

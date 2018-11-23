@@ -2,17 +2,37 @@
 
 {% block content %}
 
-<h1>Employee Work</h1>
+<h1>Employee Work Form</h1>
+
+<h3><u>Job</u></h3> {{ timesheet.job.name }}
+<h3><u>Job Number</u></h3> {{ timesheet.job.job_num }}
+<h3><u>Supervisor</u></h3> {{ timesheet.supervisor }}
+
+<br><br>
 
 
+<!--{% if not more_employees %}-->
 
-# Put a CharField here for how many employee_works you want on the timesheet
+<!--More Employees? <a href="{% url 'add_employee_work' timesheet_id=timesheet.id %}?more_employees=True">More</a>-->
+
+<!--{% endif %}-->
+
+<!--<br><br>-->
+
+<!--{% if more_employees %}-->
+
+<!--Number of Employees: <input type="text" name="number_employees"/>-->
+<!--<a href="{% url 'add_employee_work' timesheet_id=timesheet.id %}">More</a>-->
+
+<!--{% endif %}-->
 
 
+<br><br>
 
 <form method="post">
   {% csrf_token %}
 
+    {{ form_set.management_form }}
 
 
 
@@ -27,7 +47,7 @@
             <th>Signature</th>
         </tr>
 
-
+        {% for form in form_set %}
 
             <tr>
                 <td>{{ form.employee }}</td>
@@ -36,15 +56,23 @@
                 <td>{{ form.lunch }}</td>
                 <td>{{ form.injured }}</td>
                 <td>{{ form.comment }}</td>
-                <td>{{ form.signature }}</td>
+                <td>SIGN HERE</td>
             </tr>
 
+        {% for error in form.errors %}
+        <p>{{ error }}</p>
+
+
+        {% endfor %}
+        {% endfor %}
 
 
 
 
-
-  <button type="submit">Start</button>
+  <button type="submit">Submit</button>
 </form>
+
+
+{{ employees }}
 
 {% endblock content %}

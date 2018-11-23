@@ -2,6 +2,8 @@ from django.db import models
 from accounts.models import Employee
 
 from datetime import datetime
+from django import forms
+
 
 
 
@@ -40,7 +42,7 @@ TIMESHEET_STATUS_CHOICES = (
 class TimeSheet(models.Model):
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True, null=True)
     date = models.DateField(default=datetime.now)
-    address = models.CharField(max_length=150)
+    address = models.CharField(max_length=150, help_text="**Change if address mobile")
     supervisor = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     supervisor_sig = models.CharField(max_length=50)
     status = models.CharField(max_length=20, choices=TIMESHEET_STATUS_CHOICES, default=TIMESHEET_STATUS_CHOICES[0][0])
@@ -69,18 +71,24 @@ EMPLOYEEWORK_LUNCH_CHOICES = (
     ('none', 'None'),
 )
 
+TIME_CHOICES = (
+    ('12:00', '12:00')
+)
+
 class EmployeeWork(models.Model):
     employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     time_sheet = models.ForeignKey(TimeSheet, blank=True, null=True, on_delete=models.SET_NULL)
-    start_time = models.DateTimeField()
-    end_time = models.DateTimeField()
+    start_time = models.TimeField(default=datetime.now)
+    end_time = models.TimeField(default=datetime.now)
     lunch = models.CharField(max_length=20, choices=EMPLOYEEWORK_LUNCH_CHOICES)
     injured = models.BooleanField()
-    comment = models.CharField(max_length=300)
-    signature = models.CharField(max_length=50)
+    comment = models.CharField(max_length=300, blank=True, null=True)
+    signature = models.CharField(max_length=50, blank=True, null=True)
 
     def __str__(self):
-        return self.employee.user.get_full_name()
+        return '{} {}'.format(self.employee.get_short_name(),
+                              self.start_time.strftime('%H:%M'),
+                              self.end_time.strftime('%H:%M'))
 
 
 
