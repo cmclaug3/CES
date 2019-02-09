@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<h1>WorkDay on {{ workday.date }}</h1>
+
+<br>
+
+<p><b>Job: </b>{{ workday.job }}</p>
+
+<p><b>Type: </b>{{ workday.job.type }}</p>
+
+<p><b>Created By: </b>{{ workday.created_by }}</p>
+
+<p><b>Address: </b>{{ workday.address }}</p>
+
+<p><b>HASP completed: </b>(YES OR NO)</p>
+
+
+<br><br>
+
+
+<h3>Timesheet <a href="{% url 'add_timesheet' workday_id=workday.id %}">ADD</a></h3>
+
+
+
+{% for timesheet in timesheets %}
+
+    <p><a href="{% url 'add_employee_work' timesheet_id=timesheet.id %}">{{ timesheet }}</a></p>
+
+{% endfor %}
+
+
+<h3>Create Job Packet <a href="#">ADD</a></h3>
+
+<h3>Create HASP <a href="#">ADD</a></h3>
+
+<h3>MSDS <a href="#">ADD</a></h3>
+
+<br>
+
+<button>SAVE</button>
+
+<button>SUBMIT</button>
+
+<button>DELETE</button>
+
+
+
+{% endblock content %}
+
+
+<!--trying to use this as a create timesheet link-->
+<!--<a href="{% url 'add_employee_work' timesheet_id=timesheet.id %}">ADD</a>-->

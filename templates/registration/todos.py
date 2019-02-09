@@ -64,4 +64,24 @@ Employee (links)
 Admin (links)
     new job, miscellanous timesheet, jobs, timesheets, settings, work history (all employees), jobs list
 
+
+
+
+MODELS
+
+    Job
+        name, created by, notes, (address)
+
+    WorkDay (collection of paperwork done by a single person)
+        JOB, date, created by,
+
+
+
+
+
+
+
+
+
+
 '''

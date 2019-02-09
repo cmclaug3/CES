@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 
+
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name='', last_name='', password=None, is_active=True, is_staff=False, is_admin=False):
         if not email:
@@ -109,6 +110,7 @@ class Employee(models.Model):
 
     def __str__(self):
         return self.get_full_name()
+
 
 
 

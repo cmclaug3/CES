@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Sign Time Sheet</h1>
+
+<p>{{ timesheet.job }}</p>
+<p>{{ timesheet.date }}</p>
+<p>{{ timesheet.address }}</p>
+<p>{{ timesheet.supervisor }}</p>
+
+<br>
+
+<table style="width:80%">
+        <tr>
+            <th>Employee</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Lunch</th>
+            <th>Injured</th>
+            <th>Comments</th>
+            <th>Signature</th>
+        </tr>
+
+
+            <tr>
+                <td>{{ employee_work.employee }}</td>
+                <td>{{ employee_work.start_time }}</td>
+                <td>{{ employee_work.end_time }}</td>
+                <td>{{ employee_work.lunch }}</td>
+                <td>{{ employee_work.injured }}</td>
+                <td>{{ employee_work.comment }}</td>
+                <td><form method="post">
+                      {% csrf_token %}
+                      <p>{{ form.pin }} **Enter Pin</p>
+                      <button type="submit">Sign</button>
+                </form></td>
+
+            </tr>
+
+
+    </table>
+
+    IS IT SIGNED??? {{ employee_work.signature }}
+
+{% endblock content %}

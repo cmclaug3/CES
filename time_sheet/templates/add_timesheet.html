@@ -5,12 +5,12 @@
 <h1>Add Time Sheet for - <i>{{ job.name }}</i></h1>
 <form method="post">
   {% csrf_token %}
-  <!--{{ form.as_p }}-->
+  {{ form.as_p }}
 
-  <!--<p>{{ form.job.label_tag }} <u>{{ job.name }} - {{ job.job_num }}</u></p>-->
-    <p>{{ form.date.label_tag }} {{ form.date }}</p>
-    <p>{{ form.address.label_tag }} {{ form.address }}</p>
-    <p>{{ form.supervisor.label_tag }} {{ form.supervisor }}</p>
+  <!--&lt;!&ndash;<p>{{ form.job.label_tag }} <u>{{ job.name }} - {{ job.job_num }}</u></p>&ndash;&gt;-->
+    <!--<p>{{ form.date.label_tag }} {{ form.date }}</p>-->
+    <!--<p>{{ form.address.label_tag }} {{ form.address }}</p>-->
+    <!--<p>{{ form.supervisor.label_tag }} {{ form.supervisor }}</p>-->
 
   <button type="submit">Start</button>
 </form>

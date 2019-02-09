@@ -3,12 +3,14 @@ from django.views import View
 from django.contrib import messages
 from django.urls import reverse
 from .forms import SetPinForm
+from datetime import datetime
+
 from django.forms import formset_factory, modelformset_factory
 
 from accounts.models import Employee
-from time_sheet.models import Job, TimeSheet, EmployeeWork
+from time_sheet.models import Job, TimeSheet, EmployeeWork, WorkDay
 
-from .forms import AddTimesheetForm, EmployeeWorkFormset
+from .forms import AddTimesheetForm, EmployeeWorkFormset, SignTimeSheetForm, CreateJobForm, WorkDayForm
 
 
 
@@ -71,12 +73,43 @@ class SetPinView(View):
 
 
 
+
+
 class JobsView(View):
     def get(self, request):
         context = {
             'jobs': Job.objects.all()
         }
         return render(request, 'jobs.html', context)
+
+
+
+
+
+
+class CreateJob(View):
+    def get(self, request):
+        form = CreateJobForm()
+        context = {
+            'form': form
+        }
+        return render(request, 'create_job.html', context)
+    def post(self, request):
+        form = CreateJobForm(request.POST)
+        if not form.is_valid():
+            context = {
+                'form': form
+            }
+            return render(request, 'create_job.html', context)
+        new_job = form.save(commit=False)
+        new_job.created_by = request.user.employee
+        new_job.save()
+        return redirect(reverse('home'))
+
+
+
+
+
 
 
 
@@ -94,33 +127,67 @@ class SingleJobView(View):
 
 
 
-# class AddWorkDayView(View):
-#     def get(self, request, job_id):
-#         data = {
-#             'address': Job.objects.get(id=job_id).address
-#         }
-#         job = Job.objects.get(id=job_id)
-#         context = {
-#             'form': WorkDayForm(initial=data),
-#             'job': job,
-#             'job_workdays': WorkDay.objects.filter(job__id=job_id)
-#         }
-#         return render(request, 'add_workday.html', context)
-#
-#     def post(self, request, job_id):
-#         form = WorkDayForm(request.POST)
-#         job = Job.objects.get(id=job_id)
-#         if not form.is_valid():
-#             context = {
-#                 'form': form
-#             }
-#             return render(request, 'add_workday.html', context)
-#
-#         workday = form.save(commit=False)
-#         workday.job = job
-#         workday.save()
-#
-#         return redirect(reverse('add_timesheet', kwargs={'workday_id': workday.id}))
+class AddWorkDayView(View):
+    def get(self, request, job_id):
+        data = {
+            'address': Job.objects.get(id=job_id).address,
+            # 'job': Job.objects.get(id=job_id)
+        }
+        job = Job.objects.get(id=job_id)
+        employee = request.user.employee
+
+        day = datetime.now().day
+        month = datetime.now().month
+        year = datetime.now().year
+
+        date = datetime(year, month, day).date()
+        context = {
+            'form': WorkDayForm(initial=data),
+            'job': job,
+            'employee': employee,
+            'date': date,
+
+            'job_workdays': WorkDay.objects.filter(job__id=job_id)
+        }
+        return render(request, 'add_workday.html', context)
+
+    def post(self, request, job_id):
+        form = WorkDayForm(request.POST)
+        job = Job.objects.get(id=job_id)
+        employee = request.user.employee
+
+        day = datetime.now().day
+        month = datetime.now().month
+        year = datetime.now().year
+
+        date = datetime(year, month, day)
+
+        if not form.is_valid():
+            context = {
+                'form': form
+            }
+            return render(request, 'add_workday.html', context)
+
+        workday = form.save(commit=False)
+        workday.job = job
+        workday.created_by = employee
+        workday.date = date
+        workday.save()
+
+        return redirect(reverse('single_workday', kwargs={'workday_id': workday.id}))
+
+
+
+
+class SingleWorkDay(View):
+    def get(self, request, workday_id):
+        workday = WorkDay.objects.get(id=workday_id)
+        timesheets = TimeSheet.objects.filter(work_day=workday)
+        context = {
+            'workday': workday,
+            'timesheets': timesheets,
+        }
+        return render(request, 'single_workday.html', context)
 
 
 
@@ -129,32 +196,44 @@ class SingleJobView(View):
 
 
 class AddTimeSheetView(View):
-    def get(self, request, job_id):
-        job = Job.objects.get(id=job_id)
-        data = {
-            'job': job,
-            'address': job.address
-        }
-        context = {
-            'form': AddTimesheetForm(initial=data),
-            'job': job,
+    '''
+    The way that these get added, i dont need a page form becuase it already knows all the fields to create
+        it is linked to a WorkDay, and has a Employee Signature that makes it completed
 
-        }
-        return render(request, 'add_timesheet.html', context)
+        SO WHAT THIS DOES...
+            automatically creates a timesheet object with a FK to the WorkDay it was added on
+    '''
+    def get(self, request, workday_id):
+        # work_day = WorkDay.objects.get(id=workday_id)
+        # data = {
+        #     'workday': work_day,
+        #     'address': work_day.address
+        # }
+        # context = {
+        #     'form': AddTimesheetForm(),
+        #     'work_day': work_day,
+        #
+        # }
+        # return render(request, 'add_timesheet.html', context)
 
-    def post(self, request, job_id):
-        job = Job.objects.get(id=job_id)
-        form = AddTimesheetForm(request.POST)
-        if not form.is_valid():
-            context = {
-                'form': form
-            }
-            return render(request, 'add_timesheet.html', context)
-
-        timesheet = form.save(commit=False)
-        timesheet.job = job
-        timesheet.save()
+        workday = WorkDay.objects.get(id=workday_id)
+        timesheet = TimeSheet.objects.create(work_day=workday)
         return redirect(reverse('add_employee_work', kwargs={'timesheet_id': timesheet.id}))
+
+
+    # def post(self, request, job_id):
+    #     job = Job.objects.get(id=job_id)
+    #     form = AddTimesheetForm(request.POST)
+    #     if not form.is_valid():
+    #         context = {
+    #             'form': form
+    #         }
+    #         return render(request, 'add_timesheet.html', context)
+    #
+    #     timesheet = form.save(commit=False)
+    #     # timesheet.job = job
+    #     timesheet.save()
+    #     return redirect(reverse('add_employee_work', kwargs={'timesheet_id': timesheet.id}))
 
 
 
@@ -197,6 +276,56 @@ class AddEmployeeWork(View):
 
 
 
+
+class SignEmployeeWork(View):
+    def get(self, request, employee_work_id):
+        employee_work = EmployeeWork.objects.get(id=employee_work_id)
+        timesheet = employee_work.time_sheet
+        form = SignTimeSheetForm()
+
+        context = {
+            'employee_work': employee_work,
+            'timesheet': timesheet,
+            'form': form,
+        }
+
+        return render(request, 'sign_employee_work.html', context)
+
+    def post(self, request, employee_work_id):
+        employee_work = EmployeeWork.objects.get(id=employee_work_id)
+        timesheet = employee_work.time_sheet
+        form = SignTimeSheetForm(request.POST)
+
+        if not form.is_valid():
+            context = {
+                'employee_work': employee_work,
+                'timesheet': timesheet,
+                'form': form,
+            }
+            return render(request, 'sign_employee_work.html', context)
+
+        pin = form.cleaned_data['pin']
+        employee = Employee.objects.get(user=request.user)
+
+
+
+
+        if pin == employee.pin:
+
+            # somehow this is not going though even though it seems to work
+            employee_work.signature = True
+
+            messages.add_message(request, messages.SUCCESS, 'You have signed an employee work')
+            return redirect(reverse('home'))
+
+        else:
+            context = {
+                'employee_work': employee_work,
+                'timesheet': timesheet,
+                'form': form,
+            }
+            messages.add_message(request, messages.ERROR, 'Your pin was incorrect, try again')
+            return render(request, 'sign_employee_work.html', context)
 
 """
 

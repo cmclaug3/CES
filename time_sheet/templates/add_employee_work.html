@@ -2,11 +2,10 @@
 
 {% block content %}
 
-<h1>Employee Work Form</h1>
+<h1>Timesheet for {{ timesheet.work_day }}</h1>
 
-<h3><u>Job</u></h3> {{ timesheet.job.name }}
-<h3><u>Job Number</u></h3> {{ timesheet.job.job_num }}
-<h3><u>Supervisor</u></h3> {{ timesheet.supervisor }}
+<h3><u>Job</u></h3> {{ timesheet.work_day.job.name }}
+<h3><u>Job Number</u></h3> {{ timesheet.work_day.job.format_job_num }}
 
 <br><br>
 
@@ -65,12 +64,18 @@
 
         {% endfor %}
         {% endfor %}
+    </table>
 
-
-
+    <br><br>
 
   <button type="submit">Submit</button>
 </form>
+
+<br>
+
+<button>SAVE/BACK</button>
+
+<button>DELETE</button>
 
 
 {{ employees }}

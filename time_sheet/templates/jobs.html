@@ -8,23 +8,23 @@
 
 {% if jobs %}
 
-    <table style="width:80%">
+    <table class="table" style="width:80%">
         <tr>
             <th>Job Name</th>
             <th>Job Number</th>
             <th>Created</th>
             <th>Type</th>
-            <th>Completed</th>
+            <!--<th>Completed</th>-->
         </tr>
 
     {% for job in jobs %}
 
             <tr>
                 <td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>
-                <td>{{ job.job_num }}</td>
+                <td>{{ job.format_job_num }}</td>
                 <td>{{ job.created_by.get_full_name }}</td>
                 <td>{{ job.type }}</td>
-                <td>{{ job.completed }}</td>
+                <!--<td>{{ job.completed }}</td>-->
             </tr>
 
 {% endfor %}

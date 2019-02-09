@@ -3,10 +3,14 @@
 {% block content %}
 
 <h1>Add Work Day for <i>{{ job.name }}</i></h1>
+<br>
 <form method="post">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Add Workspace/Begin Timesheet</button>
+  <p><b>Creator: </b>{{ request.user.employee.get_short_name }}</p>
+  <p><b>Date:  </b>{{ date }}</p>
+  <p>{{ form.address.label_tag }} {{ form.address }}</p>
+  <br>
+  <button type="submit">CREATE WORKDAY</button>
 </form>
 
 
@@ -19,7 +23,9 @@
 <br><br><br>
 {% for job_workday in job_workdays %}
 
-Workday on {{ job_workday.date }} for {{ job.name }}
+<!--Workday on {{ job_workday.date }} for {{ job.name }}-->
+
+
 
 <br>
 
@@ -30,4 +36,5 @@ Workday on {{ job_workday.date }} for {{ job.name }}
 {% endblock content %}
 
 
-<a href="{% url 'add_timesheet' workday_id=workday.id %}">Add Time Sheet</a>
+<a href="{% url 'single_workday' workday_id=workday.id %}">START</a>
+<!--<a href="{% url 'single_workday' workday_id=workday.id %}">{{ workday.job }}</a>-->

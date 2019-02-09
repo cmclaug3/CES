@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.forms.models import modelformset_factory
 
-from .models import TimeSheet, EmployeeWork
+from .models import TimeSheet, EmployeeWork, Job, WorkDay
 from datetime import datetime
 
 
@@ -20,10 +20,15 @@ class DateInput(forms.DateInput):
 class AddTimesheetForm(ModelForm):
     class Meta:
         model = TimeSheet
-        fields = ['job', 'date', 'address', 'supervisor']
+        fields = ['work_day', 'creator_signature']
         widgets = {
             'date': DateInput()
         }
+
+class WorkDayForm(ModelForm):
+    class Meta:
+        model = WorkDay
+        fields = ['address']
 
 
 
@@ -35,13 +40,26 @@ class TimeInput(forms.TimeInput):
     input_type = 'time'
 
 
-# class EmployeeWorkForm(ModelForm):
-#     class Meta:
-#         model = EmployeeWork
-#         fields = ['employee', 'start_time', 'end_time', 'lunch', 'injured', 'comment']
-#         widgets = {
-#             'start_time': TimeInput(format='%H:%M'),
-#             'end_time': TimeInput(format='%H:%M')
-#         }
+class EmployeeWorkForm(ModelForm):
+    class Meta:
+        model = EmployeeWork
+        fields = ['employee', 'start_time', 'end_time', 'lunch', 'injured', 'comment']
+        widgets = {
+            'start_time': TimeInput(format='%H:%M'),
+            'end_time': TimeInput(format='%H:%M')
+        }
 
 EmployeeWorkFormset = modelformset_factory(EmployeeWork, exclude=(), extra=3)
+
+class SignTimeSheetForm(forms.Form):
+    pin = forms.CharField(max_length=8, help_text="Enter Pin")
+
+
+
+class CreateJobForm(ModelForm):
+    class Meta:
+        model = Job
+        fields = ['name', 'job_num', 'address', 'type']
+
+
+

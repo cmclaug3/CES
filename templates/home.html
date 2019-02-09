@@ -11,19 +11,74 @@
 
 <p>welcome to the CES employee portal {{ user.get_short_name }}</p>
 
+<br>
+
 <p>are you staff: {{ user.is_staff }}</p>
 <p>are you superuser: {{ user.is_admin }}</p>
 <p>your pin: {{ user.employee.pin }}</p>
 
+<br>
 
-
-<h2>Employee Works that need to be signed</h2>
+<h2>Timesheets Needing Signatures</h2>
 
 {% for employee_work in unsigned_employee_works %}
 
-<p>employee_work</p>
+<p><a href="{% url 'sign_employee_work' employee_work_id=employee_work.id %}">{{employee_work}}</a><p/>
+
+
+{% empty %}
+
+<p>None..</p>
 
 {% endfor %}
+
+
+<br>
+
+
+<h2>Incomplete PaperWork</h2>
+
+{% for workday in unfinished_workdays %}
+
+<!--<p>{{ workday.date }} {{ workday.job.name }}</p>-->
+
+<p><a href="{% url 'single_workday' workday_id=workday.id %}">{{ workday.date }} {{ workday.job.name }}</a><p/>
+
+{% empty %}
+
+<p>None..</p>
+
+{% endfor %}
+
+
+
+
+
+
+
+
+<!--{% if user.is_staff == True %}-->
+
+<!--<br><br>-->
+
+    <!--<h2>This weeks Timesheets</h2>-->
+
+    <!--{% for day in this_weeks_timesheets %}-->
+<!--&lt;!&ndash;WHY IS THIS ONLY SHOWING ONE DATE DAY OF THEW WEEK AND ONLY UTC TIMESHEETS!!!!&ndash;&gt;-->
+
+    <!--<h4>{{ day.first.date }}</h4>-->
+
+    <!--{% for timesheet in day %}-->
+
+    <!--<p><i>{{timesheet}}</i> {{timesheet.job}}</p>-->
+
+    <!--{% endfor %}-->
+
+    <!--<br>-->
+
+    <!--{% endfor %}-->
+
+<!--{% endif %}-->
 
 
 
