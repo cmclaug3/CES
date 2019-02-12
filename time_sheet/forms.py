@@ -59,7 +59,7 @@ class SignTimeSheetForm(forms.Form):
 class CreateJobForm(ModelForm):
     class Meta:
         model = Job
-        fields = ['name', 'job_num', 'address', 'type']
+        fields = ['name', 'job_num', 'address', 'type', 'notes']
 
 
 

@@ -27,6 +27,7 @@ class Job(models.Model):
     created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
     type = models.CharField(max_length=20, choices=JOB_TYPE_CHOICES)
     created_date = models.DateField(auto_now_add=True, blank=True, null=True)
+    notes = models.TextField(default='')
 
     # Does HASP have to eventually connect as a foreign key here?
 
@@ -115,6 +116,7 @@ class WorkDay(models.Model):
 class TimeSheet(models.Model):
     work_day = models.ForeignKey(WorkDay, on_delete=models.SET_NULL, null=True, blank=True)
     creator_signature = models.CharField(max_length=50, blank=True, null=True)
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return 'Timesheet for {} on {}'.format(self.work_day.job.name, self.work_day.date)

@@ -39,5 +39,5 @@ class WeightCalculator(View):
         context = {
 
         }
-        return render(request, 'weight_calculator.html', context)
+        return render(request, 'weightCalculator.html', context)
 

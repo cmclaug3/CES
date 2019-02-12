@@ -1,0 +1,266 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Weight Calculator{% endblock %}
+
+{% block content %}
+
+<!--<div class="container">-->
+
+    <h1>Weight Calculator</h1>
+
+
+
+<body>
+    <form id="shapeChoices">
+        <input type="radio" name="shapeChoices" value="Prism"> Prism<br>
+        <input type="radio" name="shapeChoices" value="Cylinder"> Cylinder<br>
+        <input type="radio" name="shapeChoices" value="Drum"> Drum<br>
+        <input type="radio" name="shapeChoices" value="Yard Box"> Yard Box<br>
+        <input type="radio" name="shapeChoices" value="Gallon">Gallon<br>
+    </form>
+    <br>
+    <button type="button" onclick="setType();">Set Type</button>
+
+    <button type="button" onclick="clearForm();">Clear</button>
+
+    <!--<br><br>-->
+
+    <!--<div>-->
+        <!--<p id="equation"></p>-->
+    <!--</div>-->
+
+
+
+
+    <div id="prismForm" style="display:none">
+        <h2>Prism</h2>
+        <form>
+            Length: <input type="text" id="priLength" >
+            Width:  <input type="text" id="priWidth" >
+            Height: <input type="text" id="priHeight" >
+            <br><br>
+            Substance: <input type="text" id="priSubstance" >
+            <br><br>
+            <button type="button" onclick="getSubstance(document.getElementById('priSubstance').value, prismCalc)">Calculate</button>
+        </form>
+    </div>
+
+
+
+    <div id="cylinderForm" style="display:none">
+        <h2>Cylinder</h2>
+        <form>
+            Diameter: <input type="text" id="cylDiameter" >
+            Height:  <input type="text" id="cylHeight" >
+            <br><br>
+            Substance: <input type="text" id="cylSubstance" >
+            <br><br>
+            <button type="button" onclick="getSubstance(document.getElementById('cylSubstance').value, cylinderCalc)">Calculate</button>
+        </form>
+    </div>
+
+
+
+    <div id="drumForm" style="display:none">
+        <h2>Drums</h2>
+        <form>
+            Number of Drums: <input type="text" id="numDrums" >
+            <br><br>
+            Substance: <input type="text" id="drumSubstance" >
+            <br><br>
+            <button type="button" onclick="getSubstance(document.getElementById('drumSubstance').value, drumCalc)">Calculate</button>
+        </form>
+    </div>
+
+
+
+    <div id="yardBoxForm" style="display:none">
+        <h2>Yard Boxes</h2>
+        <form>
+            Number of Boxes: <input type="text" id="numBoxes" >
+            <br><br>
+            Substance: <input type="text" id="boxSubstance" >
+            <br><br>
+            <button type="button" onclick="getSubstance(document.getElementById('boxSubstance').value, yardBoxCalc)">Calculate</button>
+        </form>
+    </div>
+
+
+
+    <div id="gallonForm" style="display:none">
+        <h2>Gallons</h2>
+        <form>
+            Number of Gallons: <input type="text" id="numGallons" >
+            <br><br>
+            Substance: <input type="text" id="galSubstance" >
+            <br><br>
+            <button type="button" onclick="getSubstance(document.getElementById('galSubstance').value, gallonCalc)">Calculate</button>
+        </form>
+    </div>
+
+
+
+    <br><br>
+
+
+    <h2 id="answer"></h2>
+
+
+
+
+
+<!--===============================JAVASCRIPT=====================================-->
+
+    <script>
+function setType() {
+
+    var choices = document.getElementById('shapeChoices');
+    var choice = choices.elements["shapeChoices"].value;
+
+    if (choice === 'Prism') {
+        document.getElementById("prismForm").style.display = "block";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+
+    }
+
+    else if (choice === 'Cylinder') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "block";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Drum') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "block";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Yard Box') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "block";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Gallon') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "block";
+    }
+
+}
+
+
+
+function clearForm() {
+    document.getElementById("prismForm").style.display = "none";
+    document.getElementById("cylinderForm").style.display = "none";
+    document.getElementById("drumForm").style.display = "none";
+    document.getElementById("yardBoxForm").style.display = "none";
+    document.getElementById("gallonForm").style.display = "none";
+    document.getElementById('answer').innerHTML = ' '
+
+}
+
+
+
+
+//================================
+//the following functions need to return volume in cubic feet
+//================================
+
+
+function prismCalc() {
+
+    var answer;
+
+    var length = document.getElementById('priLength').value;
+    var width = document.getElementById('priWidth').value;
+    var height = document.getElementById('priHeight').value;
+    var answer = parseFloat(length) * parseFloat(width) * parseFloat(height)
+    return answer
+
+}
+
+
+
+function cylinderCalc() {
+    var diameter = document.getElementById('cylDiameter').value;
+    var height = document.getElementById('cylHeight').value;
+    var answer = (parseFloat(diameter) / 2)**2 * 3.14 * parseFloat(height)
+    return answer
+}
+
+
+
+function drumCalc() {
+    var numberOfDrums = document.getElementById('numDrums').value;
+    var answer = parseFloat(numberOfDrums) * 7.35
+    return answer
+}
+
+
+function yardBoxCalc() {
+    var numberOfBoxes = document.getElementById('numBoxes').value;
+    var answer = parseFloat(numberOfBoxes) * 27
+    return answer
+}
+
+
+function gallonCalc() {
+    var numberOfGallons = document.getElementById('numGallons').value;
+    var answer = parseFloat(numberOfGallons) * 0.133681
+    return answer
+
+}
+
+
+//========================
+//end
+//========================
+
+
+
+
+//what this function does is take the value of substance input and the correct volume function
+//and output the total weight
+
+function getSubstance(s, volFunc) {
+    var subs = {
+    water: 62.42718356,
+    dirt: 76.5,
+    diesel: 53.11,
+    }
+
+    var vol = volFunc()
+    var Weight = vol * subs[s]
+    var totalWeight = Weight.toFixed(2)
+
+    document.getElementById('answer').innerHTML = totalWeight + ' LBS';
+
+}
+    </script>
+
+<!--===============================JAVASCRIPT=====================================-->
+
+
+
+
+
+
+</body>
+
+
+{% endblock %}

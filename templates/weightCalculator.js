@@ -1,0 +1,164 @@
+
+
+
+function setType() {
+
+    var choices = document.getElementById('shapeChoices');
+    var choice = choices.elements["shapeChoices"].value;
+
+//    document.getElementById('equation').innerHTML = choice;
+
+    if (choice === 'Prism') {
+        document.getElementById("prismForm").style.display = "block";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+
+    }
+
+    else if (choice === 'Cylinder') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "block";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Drum') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "block";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Yard Box') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "block";
+        document.getElementById("gallonForm").style.display = "none";
+    }
+
+    else if (choice === 'Gallon') {
+        document.getElementById("prismForm").style.display = "none";
+        document.getElementById("cylinderForm").style.display = "none";
+        document.getElementById("drumForm").style.display = "none";
+        document.getElementById("yardBoxForm").style.display = "none";
+        document.getElementById("gallonForm").style.display = "block";
+    }
+
+}
+
+
+
+//this isnt working when being called after another function in the
+//same external javascript file
+
+function clearForm() {
+    document.getElementById("prismForm").style.display = "none";
+    document.getElementById("cylinderForm").style.display = "none";
+    document.getElementById("drumForm").style.display = "none";
+    document.getElementById("yardBoxForm").style.display = "none";
+    document.getElementById("gallonForm").style.display = "none";
+
+}
+
+
+
+
+
+
+//================================
+//the following functions need to return volume in cubic feet
+//================================
+
+function prismCalc() {
+
+    var answer;
+
+    var length = document.getElementById('priLength').value;
+    var width = document.getElementById('priWidth').value;
+    var height = document.getElementById('priHeight').value;
+
+    // var sub = document.getElementById('priSubstance').value;
+
+
+    var answer = parseFloat(length) * parseFloat(width) * parseFloat(height)
+
+    // document.getElementById('answer').innerHTML = answer + ' ' + 'LBS';
+
+    return answer
+
+}
+
+
+
+function cylinderCalc() {
+    var diameter = document.getElementById('cylDiameter').value;
+    var height = document.getElementById('cylHeight').value;
+
+    var answer = (parseFloat(diameter) / 2)**2 * 3.14 * parseFloat(height)
+
+    return answer
+}
+
+
+//need to return volume in cubic feet...
+function drumCalc() {
+    var numberOfDrums = document.getElementById('numDrums').value;
+
+    var answer = parseFloat(numberOfDrums) * 7.35
+
+    return answer
+}
+
+
+function yardBoxCalc() {
+    var numberOfBoxes = document.getElementById('numBoxes').value;
+
+    var answer = parseFloat(numberOfBoxes) * 27
+
+    return answer
+}
+
+
+function gallonCalc() {
+
+    var numberOfGallons = document.getElementById('numGallons').value;
+
+    var answer = parseFloat(numberOfGallons) * 0.133681
+
+    return answer
+
+}
+
+
+//========================
+//end
+//========================
+
+
+
+
+
+
+
+
+
+//what this function does is take the value of substance input and the correct volume function
+//and output the total weight
+function getSubstance(s, volFunc) {
+    var subs = {
+    water: 62.42718356,
+    dirt: 76.5
+    }
+
+    var vol = volFunc()
+    var Weight = vol * subs[s]
+    var totalWeight = Weight.toFixed(2)
+
+    document.getElementById('answer').innerHTML = totalWeight + ' LBS';
+
+}
