@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<h1>{{ employee.get_full_name }}</h1>
+
+<br>
+
+<p><b>Email: </b>{{ employee.user.email }}</p>
+
+<p><b>Phone: </b>{{ employee.format_phone_num }}</p>
+
+<p><b>Total WorkDays: </b>{{ emp_workdays.count }}</p>
+
+<p><b>Total Timesheets: </b>{{ emp_employee_works.count }}</p>
+
+
+<br><br>
+
+<h2>WorkDays</h2>
+{% for workday in emp_workdays %}
+
+    {{ workday }} <br>
+
+{% endfor %}
+
+<br><br>
+
+<h2>TimeSheets</h2>
+{% for timesheet in emp_employee_works %}
+
+    {{ timesheet }} <br>
+
+{% endfor %}
+
+<br><br>
+
+<h2>Receipts</h2>
+
+
+
+
+
+
+{% endblock content %}

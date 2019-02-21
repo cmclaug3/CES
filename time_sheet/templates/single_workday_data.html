@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<h1>WorkDay on {{ workday.date }}</h1>
+
+<br>
+
+<p><b>Job: </b>{{ workday.job }}</p>
+
+<p><b>Type: </b>{{ workday.job.type }}</p>
+
+<p><b>Created By: </b>{{ workday.created_by }}</p>
+
+<p><b>Address: </b>{{ workday.address }}</p>
+
+<p><b>HASP completed: </b>(YES OR NO)</p>
+
+
+<br><br>
+
+
+
+
+
+
+{% endblock content %}

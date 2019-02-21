@@ -20,6 +20,7 @@
             <th>Injured</th>
             <th>Comments</th>
             <th>Signature</th>
+            <th>Total Hours</th>
         </tr>
 
 
@@ -35,12 +36,11 @@
                       <p>{{ form.pin }} **Enter Pin</p>
                       <button type="submit">Sign</button>
                 </form></td>
+                <td>{{ employee_work.total_hours }}</td>
 
             </tr>
 
 
     </table>
-
-    IS IT SIGNED??? {{ employee_work.signature }}
 
 {% endblock content %}

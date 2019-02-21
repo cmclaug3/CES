@@ -11,7 +11,9 @@ from time_sheet.models import EmployeeWork, TimeSheet, WorkDay
 def home(request):
 
     unsigned_employee_works = EmployeeWork.objects.filter(signature=False)
+
     current_user_unsigned_employee_works = []
+
     for employee_work in unsigned_employee_works:
         if employee_work.employee == Employee.objects.get(user=request.user):
             current_user_unsigned_employee_works.append(employee_work)
@@ -27,6 +29,10 @@ def home(request):
         'user': request.user,
         'unsigned_employee_works': current_user_unsigned_employee_works,
         'unfinished_workdays': unfinished_workdays,
+
+        'all_workdays': WorkDay.objects.all(),
+        'all_timesheets': TimeSheet.objects.all(),
+        'all_employeeworks': EmployeeWork.objects.all(),
 
         # 'this_weeks_timesheets': this_weeks_timesheets
     }

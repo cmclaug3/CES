@@ -101,12 +101,23 @@ class User(AbstractBaseUser):
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     pin = models.CharField(max_length=15, default=0000, blank=True, null=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True, default='')
 
     def get_full_name(self):
         return self.user.get_full_name()
 
     def get_short_name(self):
         return self.user.get_short_name()
+
+    def format_phone_num(self):
+        if self.phone_number:
+            nums = list(self.phone_number)
+            nums.insert(6, '-')
+            nums.insert(3, '-')
+            yes = ''.join(nums)
+            return yes
+        else:
+            return self.phone_number
 
     def __str__(self):
         return self.get_full_name()

@@ -32,6 +32,7 @@
   {% csrf_token %}
 
     {{ form_set.management_form }}
+    <!--{{ form_set.as_table }}-->
 
 
 
@@ -44,6 +45,8 @@
             <th>Injured</th>
             <th>Comments</th>
             <th>Signature</th>
+            <th>Signed?</th>
+            <th>Delete?</th>
         </tr>
 
         {% for form in form_set %}
@@ -55,16 +58,34 @@
                 <td>{{ form.lunch }}</td>
                 <td>{{ form.injured }}</td>
                 <td>{{ form.comment }}</td>
-                <td>SIGN HERE</td>
+
+
+
+              <!--THIS WHERE THE MAGIC IS HAPPENING....-->
+                <td>SIGN HERE {{ form.initial.id }}</td>
+
+                {% if form.signature.value == True %}
+
+                <td>YES</td>
+
+                {% else %}
+
+                <td>NO</td>
+
+                {% endif %}
+
+                <td>{{ form.DELETE }}</td>
+
+
             </tr>
-
-        {% for error in form.errors %}
-        <p>{{ error }}</p>
-
-
-        {% endfor %}
         {% endfor %}
     </table>
+
+    {% for dict in form_set.errors %}
+        {% for error in dict.values %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
 
     <br><br>
 
@@ -75,7 +96,11 @@
 
 <button>SAVE/BACK</button>
 
-<button>DELETE</button>
+<a href="{% url 'delete_timesheet_view' timesheet_id=timesheet.id %}" class="btn">DELETE</a>
+
+<script>
+
+</script>
 
 
 {{ employees }}

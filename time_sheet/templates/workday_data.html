@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>WorkDays</h1>
+
+<br>
+
+{% if workdays %}
+
+    <table class="table" style="width:80%">
+        <tr>
+            <th>Date</th>
+            <th>Job Name</th>
+            <th>Created By</th>
+            <th>Status</th>
+        </tr>
+
+    {% for workday in workdays %}
+
+            <tr>
+                <td><a href="{% url 'single_workday_data' workday_id=workday.id %}">{{ workday.date }}</a></td>
+                <td>{{ workday.job.name }}</td>
+                <td>{{ workday.created_by.get_full_name }}</td>
+                <td>{{ workday.status }}</td>
+            </tr>
+
+{% endfor %}
+
+    </table>
+
+{% else %}
+
+    <h5>No workdays added yet...</h5>
+
+{% endif %}
+
+{% endblock content %}
+
+<td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>
+
+

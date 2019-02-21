@@ -2,6 +2,7 @@ from django.db import models
 from accounts.models import User, Employee
 
 from datetime import datetime
+from datetime import time
 from datetime import timedelta
 from django import forms
 
@@ -114,7 +115,7 @@ class WorkDay(models.Model):
 
 
 class TimeSheet(models.Model):
-    work_day = models.ForeignKey(WorkDay, on_delete=models.SET_NULL, null=True, blank=True)
+    work_day = models.ForeignKey(WorkDay, on_delete=models.CASCADE, null=True, blank=True)
     creator_signature = models.CharField(max_length=50, blank=True, null=True)
     completed = models.BooleanField(default=False)
 
@@ -147,40 +148,38 @@ class EmployeeWork(models.Model):
     )
 
     TIME_CHOICES = (
-        ('00:00', '00:00'), ('00:30', '00:30'), ('01:00', '01:00'), ('01:30', '01:30'), ('02:00', '02:00'), ('02:30', '02:30'),
-        ('03:00', '03:00'), ('03:30', '03:30'), ('04:00', '04:00'), ('04:30', '04:30'), ('05:00', '05:00'), ('05:30', '05:30'),
-        ('06:00', '06:00'), ('06:30', '06:30'), ('07:00', '07:00'), ('07:30', '07:30'), ('08:00', '08:00'), ('08:30', '08:30'),
-        ('09:00', '09:00'), ('09:30', '09:00'), ('10:00', '10:00'), ('10:30', '10:30'), ('11:00', '11:00'), ('11:30', '11:30'),
-        ('12:00', '12:00'), ('12:30', '12:30'), ('13:00', '13:00'), ('13:30', '13:30'), ('14:00', '14:00'), ('14:30', '14:30'),
-        ('15:00', '15:00'), ('15:30', '15:30'), ('16:00', '16:00'), ('16:30', '16:30'), ('17:00', '17:00'), ('17:30', '17:30'),
-        ('18:00', '18:00'), ('18:30', '18:30'), ('19:00', '19:00'), ('19:30', '19:30'), ('20:00', '20:00'), ('20:30', '20:30'),
-        ('21:00', '21:00'), ('21:30', '21:30'), ('22:00', '22:00'), ('22:30', '22:30'), ('23:00', '23:00'), ('23:30', '23:30'),
+        (time(0, 0), '00:00'), (time(0, 30), '00:30'), (time(1, 0), '01:00'), (time(1, 30), '01:30'), (time(2, 0), '02:00'), (time(2, 30), '02:30'),
+        (time(3, 0), '03:00'), (time(3, 30), '03:30'), (time(4, 0), '04:00'), (time(4, 30), '04:30'), (time(5, 0), '05:00'), (time(5, 30), '05:30'),
+        (time(6, 0), '06:00'), (time(6, 30), '06:30'), (time(7, 0), '07:00'), (time(7, 30), '07:30'), (time(8, 0), '08:00'), (time(8, 30), '08:30'),
+        (time(9, 0), '09:00'), (time(9, 30), '09:00'), (time(10, 0), '10:00'), (time(10, 30), '10:30'), (time(11, 0), '11:00'), (time(11, 30), '11:30'),
+        (time(12, 0), '12:00'), (time(12, 30), '12:30'), (time(13, 0), '13:00'), (time(13, 30), '13:30'), (time(14, 0), '14:00'), (time(14, 30), '14:30'),
+        (time(15, 0), '15:00'), (time(15, 30), '15:30'), (time(16, 0), '16:00'), (time(16, 30), '16:30'), (time(17, 0), '17:00'), (time(17, 30), '17:30'),
+        (time(18, 0), '18:00'), (time(18, 30), '18:30'), (time(19, 0), '19:00'), (time(19, 30), '19:30'), (time(20, 0), '20:00'), (time(20, 30), '20:30'),
+        (time(21, 0), '21:00'), (time(21, 30), '21:00'), (time(22, 0), '22:00'), (time(22, 30), '22:30'), (time(23, 0), '23:00'), (time(23, 30), '23:30'),
     )
 
     employee = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
-    time_sheet = models.ForeignKey(TimeSheet, blank=True, null=True, on_delete=models.SET_NULL)
-
-
-    # need to figure out how to take choice value strings and story them as datetime objects
-
+    time_sheet = models.ForeignKey(TimeSheet, blank=True, null=True, on_delete=models.CASCADE)
     start_time = models.TimeField(choices=TIME_CHOICES)
     end_time = models.TimeField(choices=TIME_CHOICES)
-
     lunch = models.CharField(max_length=20, choices=EMPLOYEEWORK_LUNCH_CHOICES)
-    injured = models.BooleanField()
+    injured = models.BooleanField(default=False)
     comment = models.CharField(max_length=300, blank=True, null=True)
     signature = models.BooleanField(blank=True, null=True, default=False)
 
     def __str__(self):
-        return '{} {} {}'.format(self.employee.get_short_name(), self.time_sheet.date, self.time_sheet.job)
+        return '{} {} {}'.format(self.employee.get_short_name(), self.time_sheet.work_day.date, self.time_sheet.work_day.job)
 
     def total_hours(self):
-        # total hours for a certain employee on a specific timesheet
-        #   end time - start time - lunch
-        pass
+        one = timedelta(hours=self.start_time.hour, minutes=self.start_time.minute)
+        two = timedelta(hours=self.end_time.hour, minutes=self.end_time.minute)
+        answer = two - one
+        if self.lunch == 'half-hour':
+            answer -= timedelta(minutes=30)
+        elif self.lunch == 'hour':
+            answer -= timedelta(hours=1)
+        return answer
 
-    def convert_string_time_choice_to_datetime(self):
-        pass
 
 
 

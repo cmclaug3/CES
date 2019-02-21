@@ -4,12 +4,22 @@
     <list default="true" id="de31af3e-8d8e-40a2-b6e4-c62e1820e15d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CES/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CES/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/weight_calculator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/weightCalculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/weightCalculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/weightCalculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/templates/weightCalculator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_sheet/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_sheet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/templates/add_employee_work.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/add_employee_work.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/templates/create_job.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/create_job.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/templates/jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/jobs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_sheet/templates/single_job.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/single_job.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/time_sheet/templates/single_workday.html" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/templates/single_workday.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/time_sheet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/time_sheet/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,39 +36,40 @@
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.5" value="3" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="126" />
-          <entry key="js" value="1" />
+          <entry key="html" value="169" />
+          <entry key="js" value="2" />
           <entry key="json" value="6" />
           <entry key="png" value="1" />
-          <entry key="py" value="137" />
+          <entry key="py" value="159" />
           <entry key="sqlite3" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="126" />
+          <entry key="HTML" value="169" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="1" />
+          <entry key="JavaScript" value="2" />
           <entry key="PLAIN_TEXT" value="6" />
-          <entry key="Python" value="137" />
+          <entry key="Python" value="159" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="9010" />
-          <entry key="py" value="24651" />
+          <entry key="html" value="11754" />
+          <entry key="py" value="31927" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="9010" />
-          <entry key="Python" value="24651" />
+          <entry key="HTML" value="11754" />
+          <entry key="Python" value="31927" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
@@ -69,25 +80,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/time_sheet/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2640">
-              <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
+            <state relative-caret-position="268">
+              <caret line="383" selection-start-line="383" selection-end-line="383" />
               <folding>
                 <element signature="e#0#45#0" expanded="true" />
-                <marker date="1549659130099" expanded="true" signature="505:581" ph="..." />
-                <marker date="1549659130099" expanded="true" signature="2559:3132" ph="..." />
-                <marker date="1549659130099" expanded="true" signature="4989:5317" ph="..." />
-                <marker date="1549659130099" expanded="true" signature="5722:5731" ph="..." />
-                <marker date="1549659130099" expanded="true" signature="6829:9784" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="505:581" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="2559:3132" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="4989:5317" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="5722:5731" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="6965:13121" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="11370:11482" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="13113:13121" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="13512:13517" ph="..." />
+                <marker date="1550719695382" expanded="true" signature="14142:14530" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_job.html">
+        <entry file="file://$PROJECT_DIR$/time_sheet/templates/delete_workday_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="495">
+              <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -95,64 +110,79 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_workday.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+            <state relative-caret-position="528">
+              <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/time_sheet/forms.py">
+        <entry file="file://$PROJECT_DIR$/time_sheet/templates/delete_timesheet_view.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="604">
-              <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
+            <state relative-caret-position="498">
+              <caret line="40" selection-start-line="40" selection-end-line="49" selection-end-column="86" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
-                <marker date="1549779124937" expanded="true" signature="722:1133" ph="..." />
-                <marker date="1549779124937" expanded="true" signature="768:832" ph="..." />
-                <marker date="1549779124937" expanded="true" signature="1248:1253" ph="..." />
-                <marker date="1549779124937" expanded="true" signature="1346:1451" ph="..." />
+                <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/time_sheet/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="95" selection-start-line="29" selection-start-column="95" selection-end-line="29" selection-end-column="95" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/time_sheet/templates/create_job.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret selection-end-line="20" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/weightCalculator.html">
+        <entry file="file://$PROJECT_DIR$/CES/testing_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="222" column="70" selection-start-line="222" selection-start-column="70" selection-end-line="222" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/weightCalculator.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1683">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CES/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="23" column="72" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
+            <state relative-caret-position="555">
+              <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
               <folding>
-                <element signature="e#0#57#0" expanded="true" />
-                <marker date="1549905918526" expanded="true" signature="1128:1254" ph="..." />
+                <element signature="e#0#67#0" expanded="true" />
+                <marker date="1550633945299" expanded="true" signature="207:212" ph="..." />
+                <marker date="1550633945299" expanded="true" signature="434:439" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CES/weights.py">
+        <entry file="file://$PROJECT_DIR$/time_sheet/templates/add_employee_work.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            <state relative-caret-position="545">
+              <caret line="98" selection-start-line="98" selection-end-line="98" selection-end-column="92" />
+              <folding>
+                <element signature="n#style#0;n#table#0;n#form#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,11 +190,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/time_sheet/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+            <state relative-caret-position="597">
+              <caret line="164" column="79" lean-forward="true" selection-start-line="164" selection-start-column="79" selection-end-line="164" selection-end-column="79" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1549778962187" expanded="true" signature="161:166" ph="..." />
+                <marker date="1550720021939" expanded="true" signature="187:192" ph="..." />
               </folding>
             </state>
           </provider>
@@ -184,6 +214,7 @@
       <find>get</find>
       <find>Timesheet.</find>
       <find>this</find>
+      <find>single_wo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -208,38 +239,46 @@
         <option value="$PROJECT_DIR$/time_sheet/templates/help.html" />
         <option value="$PROJECT_DIR$/accounts/views.py" />
         <option value="$PROJECT_DIR$/CES/settings.py" />
-        <option value="$PROJECT_DIR$/accounts/models.py" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html" />
         <option value="$PROJECT_DIR$/accounts/templates/register_authorized_user_form.html" />
         <option value="$PROJECT_DIR$/templates/registration/todos.py" />
         <option value="$PROJECT_DIR$/time_sheet/templates/add_timesheet.html" />
-        <option value="$PROJECT_DIR$/time_sheet/urls.py" />
         <option value="$PROJECT_DIR$/time_sheet/admin.py" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/jobs.html" />
         <option value="$PROJECT_DIR$/time_sheet/templates/add_workday.html" />
         <option value="$PROJECT_DIR$/CES/weights.py" />
         <option value="$PROJECT_DIR$/CES/urls.py" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/create_job.html" />
         <option value="$PROJECT_DIR$/time_sheet/templates/set_pin_form.html" />
-        <option value="$PROJECT_DIR$/time_sheet/views.py" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/add_employee_work.html" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/home.html" />
-        <option value="$PROJECT_DIR$/time_sheet/models.py" />
-        <option value="$PROJECT_DIR$/time_sheet/forms.py" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/single_job.html" />
-        <option value="$PROJECT_DIR$/time_sheet/templates/single_workday.html" />
         <option value="$PROJECT_DIR$/templates/weight_calculator.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/jobs.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/single_job.html" />
+        <option value="$PROJECT_DIR$/templates/weightCalculator.js" />
+        <option value="$PROJECT_DIR$/time_sheet/forms.py" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/create_job.html" />
         <option value="$PROJECT_DIR$/CES/views.py" />
+        <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/workdays.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/workday_data.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/single_workday_data.html" />
         <option value="$PROJECT_DIR$/templates/weightCalculator.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/employee_data.html" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/single_employee_data.html" />
+        <option value="$PROJECT_DIR$/accounts/models.py" />
+        <option value="$PROJECT_DIR$/CES/testing_tools.py" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/delete_timesheet_view.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/add_employee_work.html" />
+        <option value="$PROJECT_DIR$/time_sheet/views.py" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/delete_workday_view.html" />
+        <option value="$PROJECT_DIR$/time_sheet/templates/single_workday.html" />
+        <option value="$PROJECT_DIR$/time_sheet/urls.py" />
+        <option value="$PROJECT_DIR$/time_sheet/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
-    <option name="y" value="84" />
+    <option name="y" value="24" />
     <option name="width" value="1374" />
-    <option name="height" value="837" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -258,18 +297,6 @@
               <item name="CES" type="b2602c69:ProjectViewProjectNode" />
               <item name="CES" type="462c0819:PsiDirectoryNode" />
               <item name="accounts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CES" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CES" type="462c0819:PsiDirectoryNode" />
-              <item name="accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CES" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CES" type="462c0819:PsiDirectoryNode" />
-              <item name="accounts" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CES" type="b2602c69:ProjectViewProjectNode" />
@@ -342,10 +369,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="84" width="1374" height="837" extended-state="0" />
+    <frame x="0" y="24" width="1374" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24981523" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1744272" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -368,48 +395,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/CES/templates/registration/login.html" />
-    <entry file="file://$PROJECT_DIR$/CES/templates/login.html" />
-    <entry file="file://$PROJECT_DIR$/static/images/ces_logo_image.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/help.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/job.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/fixtures/accounts.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="181" column="5" lean-forward="true" selection-start-line="181" selection-start-column="5" selection-end-line="181" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/password_reset_done.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/registration/password_reset_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="22" lean-forward="true" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/registration/first_time_registration_form.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -468,9 +453,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/migrations/0002_receipt_driver.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/migrations/0002_receipt_driver.py" />
     <entry file="file://$PROJECT_DIR$/accounts/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -495,51 +478,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/jobs.html">
+    <entry file="file://$PROJECT_DIR$/templates/weight_calculator.py" />
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/set_pin_form.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="59" lean-forward="true" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-390">
-          <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <marker date="1543030884547" expanded="true" signature="142:1633" ph="..." />
-            <marker date="1543030884547" expanded="true" signature="1662:2707" ph="..." />
-            <marker date="1543030884547" expanded="true" signature="2456:2482" ph="..." />
-            <marker date="1543030884547" expanded="true" signature="2981:3029" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/weight_calculator.html" />
     <entry file="file://$PROJECT_DIR$/time_sheet/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/views.py">
+    <entry file="file://$PROJECT_DIR$/CES/weights.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/weight_calculator.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/CES/urls.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -551,37 +510,126 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html">
+    <entry file="file://$PROJECT_DIR$/time_sheet/apps.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="51" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
+        <state relative-caret-position="1425">
+          <caret line="95" column="60" lean-forward="true" selection-start-line="95" selection-start-column="60" selection-end-line="95" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/help.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/weightCalculator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="72" lean-forward="true" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/workdays.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/weightCalculator.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="50" lean-forward="true" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        <state relative-caret-position="420">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/set_pin_form.html">
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_workday_data.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        <state>
+          <caret selection-end-line="28" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/add_workday.html">
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_employee_data.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="360">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CES/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="29" column="44" lean-forward="true" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+            <marker date="1550621913136" expanded="true" signature="142:1633" ph="..." />
+            <marker date="1550621913136" expanded="true" signature="1662:2707" ph="..." />
+            <marker date="1550621913136" expanded="true" signature="2456:2482" ph="..." />
+            <marker date="1550621913136" expanded="true" signature="3067:3391" ph="..." />
+            <marker date="1550621913136" expanded="true" signature="3172:3391" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <marker date="1550446908016" expanded="true" signature="779:1333" ph="..." />
+            <marker date="1550446908016" expanded="true" signature="825:894" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1577">
+          <caret line="140" column="14" lean-forward="true" selection-start-line="140" selection-start-column="14" selection-end-line="140" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/jobs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" column="42" lean-forward="true" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -592,127 +640,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/add_workday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/workday_data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_job.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/employee_data.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/time_sheet/templates/create_job.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        <state>
+          <caret selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/sign_employee_work.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/delete_timesheet_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="40" selection-start-line="40" selection-end-line="49" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="383" selection-start-line="383" selection-end-line="383" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+            <marker date="1550719695382" expanded="true" signature="505:581" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="2559:3132" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="4989:5317" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="5722:5731" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="6965:13121" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="11370:11482" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="13113:13121" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="13512:13517" ph="..." />
+            <marker date="1550719695382" expanded="true" signature="14142:14530" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/time_sheet/templates/delete_workday_view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="33" column="54" selection-start-line="33" selection-start-column="54" selection-end-line="33" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/time_sheet/templates/add_employee_work.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="545">
+          <caret line="98" selection-start-line="98" selection-end-line="98" selection-end-column="92" />
           <folding>
             <element signature="n#style#0;n#table#0;n#form#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="30" column="13" lean-forward="true" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CES/weights.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_job.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/time_sheet/templates/single_workday.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+        <state relative-caret-position="528">
+          <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/views.py">
+    <entry file="file://$PROJECT_DIR$/time_sheet/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2640">
-          <caret line="239" lean-forward="true" selection-start-line="239" selection-end-line="239" />
+        <state relative-caret-position="435">
+          <caret line="29" column="95" selection-start-line="29" selection-start-column="95" selection-end-line="29" selection-end-column="95" />
           <folding>
-            <element signature="e#0#45#0" expanded="true" />
-            <marker date="1549659130099" expanded="true" signature="505:581" ph="..." />
-            <marker date="1549659130099" expanded="true" signature="2559:3132" ph="..." />
-            <marker date="1549659130099" expanded="true" signature="4989:5317" ph="..." />
-            <marker date="1549659130099" expanded="true" signature="5722:5731" ph="..." />
-            <marker date="1549659130099" expanded="true" signature="6829:9784" ph="..." />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CES/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="23" column="72" lean-forward="true" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#57#0" expanded="true" />
-            <marker date="1549905918526" expanded="true" signature="1128:1254" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/weight_calculator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/time_sheet/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="61" column="62" selection-start-line="61" selection-start-column="62" selection-end-line="61" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-            <marker date="1549779124937" expanded="true" signature="722:1133" ph="..." />
-            <marker date="1549779124937" expanded="true" signature="768:832" ph="..." />
-            <marker date="1549779124937" expanded="true" signature="1248:1253" ph="..." />
-            <marker date="1549779124937" expanded="true" signature="1346:1451" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/weightCalculator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1683">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/time_sheet/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        <state relative-caret-position="597">
+          <caret line="164" column="79" lean-forward="true" selection-start-line="164" selection-start-column="79" selection-end-line="164" selection-end-column="79" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1549778962187" expanded="true" signature="161:166" ph="..." />
+            <marker date="1550720021939" expanded="true" signature="187:192" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/weightCalculator.html">
+    <entry file="file://$PROJECT_DIR$/CES/testing_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="222" column="70" selection-start-line="222" selection-start-column="70" selection-end-line="222" selection-end-column="70" />
+        <state relative-caret-position="555">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+            <marker date="1550633945299" expanded="true" signature="207:212" ph="..." />
+            <marker date="1550633945299" expanded="true" signature="434:439" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Employees</h1>
+
+<br>
+
+{% if employees %}
+
+    <table class="table" style="width:80%">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+
+    {% for employee in employees %}
+
+            <tr>
+                <td><a href="{% url 'single_employee_data' employee_id=employee.id %}">{{ employee.get_full_name }}</a></td>
+                <td>{{ employee.user.email }}</td>
+                <td>{{ employee.format_phone_num }}</td>
+            </tr>
+
+{% endfor %}
+
+    </table>
+
+{% else %}
+
+    <h5>No employees added yet...</h5>
+
+{% endif %}
+
+{% endblock content %}
+
+<td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>

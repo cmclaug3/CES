@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<h1>Delete WorkDay on {{ workday.date }}</h1>
+
+<br>
+
+<p><b>Job: </b>{{ workday.job }}</p>
+
+<p><b>Type: </b>{{ workday.job.type }}</p>
+
+<p><b>Created By: </b>{{ workday.created_by }}</p>
+
+<p><b>Address: </b>{{ workday.address }}</p>
+
+<p><b>HASP completed: </b>(YES OR NO)</p>
+
+
+<br><br>
+
+
+<h3>Are you absolutely sure you want to delete this WORKDAY??</h3>
+
+<br>
+
+
+<!--this button needs to delete all EmployeeWorks of specific TimeSheet and go back to original single WorkDay View-->
+<a href="{% url 'delete_that_workday' workday_id=workday.id %}" class="btn">DELETE IT</a>
+
+<!--this button needs to bring user back to add_employee_works where they were at-->
+<a href="{% url 'single_workday' workday_id=workday.id %}" class="btn">Back</a>
+
+
+
+{% endblock content %}

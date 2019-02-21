@@ -18,7 +18,7 @@
         <input type="radio" name="shapeChoices" value="Cylinder"> Cylinder<br>
         <input type="radio" name="shapeChoices" value="Drum"> Drum<br>
         <input type="radio" name="shapeChoices" value="Yard Box"> Yard Box<br>
-        <input type="radio" name="shapeChoices" value="Gallon">Gallon<br>
+        <input type="radio" name="shapeChoices" value="Gallon"> Gallon<br>
     </form>
     <br>
     <button type="button" onclick="setType();">Set Type</button>
@@ -107,6 +107,17 @@
 
     <h2 id="answer"></h2>
 
+    <br>
+    <h3>Substances</h3>
+    <ul>
+        <li>water</li>
+        <li>dirt</li>
+        <li>diesel</li>
+        <li>ice</li>
+        <li>kerosene</li>
+        <li>mud</li>
+        <li>asbestos</li>
+    </ul>
 
 
 
@@ -195,14 +206,12 @@ function prismCalc() {
 }
 
 
-
 function cylinderCalc() {
     var diameter = document.getElementById('cylDiameter').value;
     var height = document.getElementById('cylHeight').value;
     var answer = (parseFloat(diameter) / 2)**2 * 3.14 * parseFloat(height)
     return answer
 }
-
 
 
 function drumCalc() {
@@ -239,17 +248,24 @@ function gallonCalc() {
 
 function getSubstance(s, volFunc) {
     var subs = {
-    water: 62.42718356,
-    dirt: 76.5,
-    diesel: 53.11,
+        water: 62.42718356,
+        dirt: 76.5,
+        diesel: 53.11,
+        ice: 56,
+        kerosene: 52,
+        mud: 115,
+        asbestos: 153,
     }
 
     var vol = volFunc()
     var Weight = vol * subs[s]
     var totalWeight = Weight.toFixed(2)
 
-    document.getElementById('answer').innerHTML = totalWeight + ' LBS';
-
+    if (isNaN(totalWeight)) {
+        document.getElementById('answer').innerHTML = 'Something is wrong';
+    } else {
+        document.getElementById('answer').innerHTML = totalWeight + ' LBS';
+    }
 }
     </script>
 

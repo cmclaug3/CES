@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Delete {{ timesheet }}</h1>
+
+<br>
+
+<table style="width:80%">
+        <tr>
+            <th>Employee</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Lunch</th>
+            <th>Injured</th>
+            <th>Comments</th>
+            <th>Signature</th>
+            <th>Total Hours</th>
+        </tr>
+
+            {% for emp_work in emp_works %}
+
+            <tr>
+                <td>{{ emp_work.employee }}</td>
+                <td>{{ emp_work.start_time }}</td>
+                <td>{{ emp_work.end_time }}</td>
+                <td>{{ emp_work.lunch }}</td>
+                <td>{{ emp_work.injured }}</td>
+                <td>{{ emp_work.comment }}</td>
+                <td>{{ emp_work.signature }}</td>
+                <td>{{ emp_work.total_hours }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+    </table>
+
+<br><br>
+
+<h3>Are you absolutely sure you want to delete this timesheet??</h3>
+
+<br>
+
+
+<!--this button needs to delete all EmployeeWorks of specific TimeSheet and go back to original single WorkDay View-->
+<a href="{% url 'delete_that_timesheet' timesheet_id=timesheet.id %}" class="btn">DELETE IT</a>
+
+<!--this button needs to bring user back to add_employee_works where they were at-->
+<a href="{% url 'add_employee_work' timesheet_id=timesheet.id %}" class="btn">Back</a>
+
+
+{% endblock content %}

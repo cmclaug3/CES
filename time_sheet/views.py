@@ -218,6 +218,7 @@ class AddTimeSheetView(View):
 
         workday = WorkDay.objects.get(id=workday_id)
         timesheet = TimeSheet.objects.create(work_day=workday)
+        timesheet.save()
         return redirect(reverse('add_employee_work', kwargs={'timesheet_id': timesheet.id}))
 
 
@@ -239,10 +240,18 @@ class AddTimeSheetView(View):
 
 
 
+
+# EmployeeWorkFormset = inlineformset_factory(TimeSheet, EmployeeWork, exclude=(), extra=2, can_delete=True)
+
 class AddEmployeeWork(View):
     def get(self, request, timesheet_id):
-        form_set = EmployeeWorkFormset(queryset=EmployeeWork.objects.none())
         timesheet = TimeSheet.objects.get(id=timesheet_id)
+        initial_employee_works = EmployeeWork.objects.filter(time_sheet=timesheet)
+
+        if initial_employee_works.count() > 0:
+            form_set = EmployeeWorkFormset(instance=timesheet)
+        else:
+            form_set = EmployeeWorkFormset()
 
         context = {
             'form_set': form_set,
@@ -257,22 +266,134 @@ class AddEmployeeWork(View):
         return render(request, 'add_employee_work.html', context)
 
     def post(self, request, timesheet_id):
-        form_set = EmployeeWorkFormset(request.POST)
         timesheet = TimeSheet.objects.get(id=timesheet_id)
+        initial_employee_works = EmployeeWork.objects.filter(time_sheet=timesheet)
+        workday = timesheet.work_day
+
+        form_set = EmployeeWorkFormset(request.POST)
+
+
+        # for del_form in form_set.deleted_forms:
+        #     del_form.delete()
+
+        print('are there any forms marked for deletion? {}'.format(form_set.deleted_forms))
+
         for form in form_set:
             if not form.is_valid():
+
+                import ipdb
+                ipdb.set_trace()
+
+                print('some form is not valid')
+                if initial_employee_works.count() > 0:
+                    form_set = EmployeeWorkFormset(instance=timesheet)
+                else:
+                    form_set = EmployeeWorkFormset()
+
                 context = {
-                    'form_set': EmployeeWorkFormset(queryset=EmployeeWork.objects.none()),
+                    'form_set':form_set,
                     'timesheet': timesheet,
                 }
-                print('something is wrong, form not valid')
                 return render(request, 'add_employee_work.html', context)
-            employee_work = form.save(commit=False)
-            employee_work.time_sheet = timesheet
-            employee_work.save()
-        messages.add_message(request, messages.SUCCESS, 'You have added an employee work')
-        return redirect(reverse('home'))
 
+            # if form.cleaned_values....
+
+            employee_work = form.save(commit=False)
+            employee_work.time_sheet = timesheet ### I DONT THINK I NEED THIS?? DO I??
+            employee_work.save()
+
+        print(len(form_set.deleted_forms))
+        for obj in form_set.deleted_forms:
+            obj.delete()
+        print(len(form_set.deleted_forms))
+
+        messages.add_message(request, messages.SUCCESS, 'You have added an employee work(s)')
+        return redirect(reverse('single_workday', kwargs={'workday_id': workday.id}))
+
+
+
+'''
+
+PROBLEMS
+
+    every time I open (what i think is) an editable timesheet, it pre populates all fields with the correct
+    information (missing the employee) but saves all the employeeworks as new objects (not the same ones edited)
+    
+    get EmployeeWorkFormset (inline formset) working properly
+        adding and deleting employeework rows from timesheet dynamically
+
+    
+    how exactly to model admininstrator interface
+    
+    
+    
+    
+    
+    
+    
+    dont worry about so much dynamically driven stuff with timesheets right now...
+        use buttons as function views that can delete one empWork (based off form.initial.id) or to delete whole timesheet
+    
+    use the dam IPDB it is a freaking awesome tool!
+    
+    
+    
+    
+    
+    https://docs.djangoproject.com/en/2.1/ref/forms/validation/
+
+if form.cleaned_values['DELETE_FIELD']:
+    timesheet = GET TIMESHEET
+    timesheet.delete()
+    
+    
+`import ipdb; ipdb.set_trace()`
+https://medium.com/@srijan.pydev_21998/complete-guide-to-deploy-django-applications-on-aws-ubuntu-16-04-instance-with-uwsgi-and-nginx-b9929da7b716
+
+<a href="{% url 'NAMESPACE' %}" class="btn">DELETE</a>
+    
+
+'''
+
+
+
+
+def delete_timesheet_view(request, timesheet_id):
+    timesheet = TimeSheet.objects.get(id=timesheet_id)
+    emp_works = EmployeeWork.objects.filter(time_sheet=timesheet)
+    context = {
+        'timesheet': timesheet,
+        'emp_works': emp_works,
+    }
+    return render(request, 'delete_timesheet_view.html', context)
+
+
+def delete_that_timesheet(request, timesheet_id):
+    timesheet = TimeSheet.objects.get(id=timesheet_id)
+    emp_works = EmployeeWork.objects.filter(time_sheet=timesheet)
+    workday = timesheet.work_day
+
+    for emp_work in emp_works:
+        emp_work.delete()
+    timesheet.delete()
+
+    return redirect(reverse('single_workday', kwargs={'workday_id': workday.id}))
+
+
+
+
+def delete_workday_view(request, workday_id):
+    workday = WorkDay.objects.get(id=workday_id)
+    context = {
+        'workday': workday,
+    }
+    return render(request, 'delete_workday_view.html', context)
+
+
+def delete_that_workday(request, workday_id):
+    workday = WorkDay.objects.get(id=workday_id)
+    workday.delete()
+    return redirect(reverse('home'))
 
 
 
@@ -307,15 +428,13 @@ class SignEmployeeWork(View):
         pin = form.cleaned_data['pin']
         employee = Employee.objects.get(user=request.user)
 
-
-
-
         if pin == employee.pin:
 
-            # somehow this is not going though even though it seems to work
             employee_work.signature = True
+            employee_work.save()
+            print(employee_work.signature)
 
-            messages.add_message(request, messages.SUCCESS, 'You have signed an employee work')
+            messages.add_message(request, messages.SUCCESS, 'You have signed a time sheet')
             return redirect(reverse('home'))
 
         else:
@@ -326,6 +445,16 @@ class SignEmployeeWork(View):
             }
             messages.add_message(request, messages.ERROR, 'Your pin was incorrect, try again')
             return render(request, 'sign_employee_work.html', context)
+
+
+
+
+
+
+
+
+
+
 
 """
 
@@ -344,7 +473,71 @@ THINGS TO DO
     CSS/JAVASCRIPT
     
     
+    jobs.html
+    should show just name and number, flowing down from columns dictating type
+    
 
 
 
 """
+
+class WorkDayData(View):
+    def get(self, request):
+        context = {
+            'workdays': WorkDay.objects.all(),
+        }
+        return render(request, 'workday_data.html', context)
+
+
+
+class SingleWorkdayData(View):
+    def get(self, request, workday_id):
+        context = {
+            'workday': WorkDay.objects.get(id=workday_id),
+        }
+        return render(request, 'single_workday_data.html', context)
+
+
+
+class EmployeeData(View):
+    def get(self, request):
+        context = {
+            'employees': Employee.objects.all(),
+        }
+        return render(request, 'employee_data.html', context)
+
+
+
+class SingleEmployeeData(View):
+    def get(self, request, employee_id):
+        employee = Employee.objects.get(id=employee_id)
+        context = {
+            'employee': employee,
+            'emp_workdays': WorkDay.objects.filter(created_by=employee),
+            'emp_employee_works': EmployeeWork.objects.filter(employee=employee),
+        }
+        return render(request, 'single_employee_data.html', context)
+
+
+'''
+SEARCH/VIEW DATA
+    Workday
+        sort by day
+            link displaying Job, date
+    Job
+        all workday for specific jobs (is it best to just do this in the already made template????)
+        
+    Employee
+        all workdays, timesheets, receipts, pictures from specific employees
+        need to include current hours, weekly hours, ect...
+        
+        
+        
+        
+    How to encapsulate Pay Periods?
+    problem with Jobs in Data because viewing jobs is the way to start a WorkDay for Employees/Admins
+    write injection tests to test site with data...
+        already in system: PreSetAuthorizedUser, Employee, Job (input more fake jobs manually)
+        needs injection: WorkDay, TimeSheet, EmployeeWork
+        
+'''
