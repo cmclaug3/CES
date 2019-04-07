@@ -19,10 +19,11 @@
 
 <br><br>
 
-<h2>WorkDays</h2>
+<h2>Paperwork Submitted</h2>
+
 {% for workday in emp_workdays %}
 
-    {{ workday }} <br>
+    <a href="{% url 'single_workday_data' workday_id=workday.id %}">{{ workday }}</a> <br>
 
 {% endfor %}
 

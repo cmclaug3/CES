@@ -50,29 +50,41 @@
 
 {% endfor %}
 
+<hr>
 
-<br><br><br>
 
-<h2>ALL WORKDAYS</h2>
-{% for workday in all_workdays %}
-    <p>{{ workday }}</p>
+
+
+{% for start_end in all_weeks %}
+
+<p>{{ start_end.0|date:"m/d/y" }} - {{ start_end.1|date:"m/d/y" }}</p>
+
 {% endfor %}
 
-<br><br><br>
 
-<h2>ALL TIMESHEETS</h2>
-{% for timesheet in all_timesheets %}
-    <p>{{ timesheet }}</p>
-{% endfor %}
 
-<br><br><br>
+<!--<br><br><br>-->
 
-<h2>ALL EMPLOYEEWORKS</h2>
-{% for empwork in all_employeeworks %}
-    <p>{{ empwork }}</p>
-{% endfor %}
+<!--<h2>ALL WORKDAYS</h2>-->
+<!--{% for workday in all_workdays %}-->
+    <!--<p>{{ workday }}</p>-->
+<!--{% endfor %}-->
 
-<br><br><br>
+<!--<br><br><br>-->
+
+<!--<h2>ALL TIMESHEETS</h2>-->
+<!--{% for timesheet in all_timesheets %}-->
+    <!--<p>{{ timesheet }}</p>-->
+<!--{% endfor %}-->
+
+<!--<br><br><br>-->
+
+<!--<h2>ALL EMPLOYEEWORKS</h2>-->
+<!--{% for empwork in all_employeeworks %}-->
+    <!--<p>{{ empwork }}</p>-->
+<!--{% endfor %}-->
+
+<!--<br><br><br>-->
 
 
 

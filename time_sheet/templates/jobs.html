@@ -10,8 +10,8 @@
 
     <table class="table" style="width:80%">
         <tr>
-            <th>Job Name</th>
             <th>Job Number</th>
+            <th>Job Name</th>
             <th>Created By</th>
             <th>Type</th>
             <!--<th>Completed</th>-->
@@ -20,8 +20,8 @@
     {% for job in jobs %}
 
             <tr>
-                <td><a href="{% url 'single_job' job_id=job.id %}">{{ job.name }}</a></td>
-                <td>{{ job.format_job_num }}</td>
+                <td><a href="{% url 'single_job' job_id=job.id %}">{{ job.format_job_num }}</a></td>
+                <td>{{ job.name }}</td>
                 <td>{{ job.created_by.get_full_name }}</td>
                 <td>{{ job.type }}</td>
                 <!--<td>{{ job.completed }}</td>-->

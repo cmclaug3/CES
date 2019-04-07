@@ -33,7 +33,7 @@
 <!--THIS DAM BUTTON DOESNT WORK-->
 <!--<input type="submit" name="add_a_timesheet" value="Add Timesheet"/>-->
 
-<a href="{% url 'add_workday' job_id=job.id %}">Add Workday</a>
-
+<!--<a href="{% url 'add_workday' job_id=job.id %}">Add Workday</a>-->
+<a class="btn btn-primary" href="{% url 'add_workday' job_id=job.id %}" role="button">Add Workday</a>
 
 {% endblock content %}

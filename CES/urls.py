@@ -18,11 +18,12 @@ from django.urls import path, include
 
 from accounts.views import RegisterAuthorizedUserView, SetNewUserPasswordView
 
-from .views import home, WeightCalculator
+from .views import home, WeightCalculator, TWA
 
 urlpatterns = [
     path('', home, name='home'),
     path('weight_calculator', WeightCalculator.as_view(), name='weight_calculator'),
+    path('twa', TWA.as_view(), name='TWA'),
     path('register_user', RegisterAuthorizedUserView.as_view(), name='register_user'),
     path('set_new_user_password/<int:new_user_id>', SetNewUserPasswordView.as_view(), name='set_new_user_password'),
     path('admin/', admin.site.urls),

@@ -53,11 +53,11 @@ class WorkDay(models.Model):
         ('Complete', 'Complete'),
     )
 
-    date = models.DateField(auto_now_add=True)
-    address = models.CharField(max_length=150, help_text="**Change if address mobile")
+    date = models.DateField()
+    address = models.CharField(max_length=150, help_text="**Change if address mobile", blank=True, null=True)
     job = models.ForeignKey(Job, on_delete=models.SET_NULL, blank=True, null=True)
     created_by = models.ForeignKey(Employee, on_delete=models.SET_NULL, null=True, blank=True)
-    creator_signature = models.CharField(max_length=50)
+    completed = models.BooleanField(default=False)
     status = models.CharField(max_length=20, choices=WORKDAY_STATUS_CHOICES, default=WORKDAY_STATUS_CHOICES[0][0])
 
     # I want put the HASP here because this is where the flow will be, but structure wise it would be better
@@ -116,7 +116,7 @@ class WorkDay(models.Model):
 
 class TimeSheet(models.Model):
     work_day = models.ForeignKey(WorkDay, on_delete=models.CASCADE, null=True, blank=True)
-    creator_signature = models.CharField(max_length=50, blank=True, null=True)
+    # creator_signature = models.CharField(max_length=50, blank=True, null=True)
     completed = models.BooleanField(default=False)
 
     def __str__(self):
@@ -178,7 +178,10 @@ class EmployeeWork(models.Model):
             answer -= timedelta(minutes=30)
         elif self.lunch == 'hour':
             answer -= timedelta(hours=1)
-        return answer
+
+        seconds = answer.seconds
+        value = seconds/3600
+        return value
 
 
 

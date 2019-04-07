@@ -484,7 +484,7 @@ THINGS TO DO
 class WorkDayData(View):
     def get(self, request):
         context = {
-            'workdays': WorkDay.objects.all(),
+            'workdays': WorkDay.objects.all().order_by('-date'),
         }
         return render(request, 'workday_data.html', context)
 
@@ -492,8 +492,12 @@ class WorkDayData(View):
 
 class SingleWorkdayData(View):
     def get(self, request, workday_id):
+        workday = WorkDay.objects.get(id=workday_id)
+        timesheets = TimeSheet.objects.filter(work_day=workday)
+
         context = {
-            'workday': WorkDay.objects.get(id=workday_id),
+            'workday': workday,
+            'timesheets': timesheets,
         }
         return render(request, 'single_workday_data.html', context)
 

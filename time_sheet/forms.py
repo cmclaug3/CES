@@ -21,7 +21,7 @@ class DateInput(forms.DateInput):
 class AddTimesheetForm(ModelForm):
     class Meta:
         model = TimeSheet
-        fields = ['work_day', 'creator_signature']
+        fields = ['work_day']
         widgets = {
             'date': DateInput()
         }

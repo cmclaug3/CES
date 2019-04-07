@@ -21,9 +21,76 @@
 
 <br><br>
 
+<h3>TIMESHEETS</h3>
 
+{% for timesheet in timesheets %}
 
+    <p>{{ timesheet }}</p>
 
+        <table style="width:80%">
+            <tr>
+                <th>Employee</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Lunch</th>
+                <th>Injured</th>
+                <th>Comments</th>
+                <th>Total Hours</th>
+            </tr>
 
+            {% for emp_work in timesheet.employeework_set.all %}
+
+            <tr>
+                <td>{{ emp_work.employee }}</td>
+                <td>{{ emp_work.start_time }}</td>
+                <td>{{ emp_work.end_time }}</td>
+                <td>{{ emp_work.lunch }}</td>
+                <td>{{ emp_work.injured }}</td>
+                <td>{{ emp_work.comment }}</td>
+                <td>{{ emp_work.total_hours }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+{% endfor %}
 
 {% endblock content %}
+
+
+
+
+
+<!--<table style="width:80%">-->
+        <!--<tr>-->
+            <!--<th>Employee</th>-->
+            <!--<th>Start Time</th>-->
+            <!--<th>End Time</th>-->
+            <!--<th>Lunch</th>-->
+            <!--<th>Injured</th>-->
+            <!--<th>Comments</th>-->
+            <!--<th>Signature</th>-->
+            <!--<th>Total Hours</th>-->
+        <!--</tr>-->
+
+
+            <!--<tr>-->
+                <!--<td>{{ employee_work.employee }}</td>-->
+                <!--<td>{{ employee_work.start_time }}</td>-->
+                <!--<td>{{ employee_work.end_time }}</td>-->
+                <!--<td>{{ employee_work.lunch }}</td>-->
+                <!--<td>{{ employee_work.injured }}</td>-->
+                <!--<td>{{ employee_work.comment }}</td>-->
+                <!--<td><form method="post">-->
+                      <!--{% csrf_token %}-->
+                      <!--<p>{{ form.pin }} **Enter Pin</p>-->
+                      <!--<button type="submit">Sign</button>-->
+                <!--</form></td>-->
+                <!--<td>{{ employee_work.total_hours }}</td>-->
+
+            <!--</tr>-->
+
+
+    <!--</table>-->

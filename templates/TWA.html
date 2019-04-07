@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}TWA{% endblock %}
+
+{% block content %}
+
+        <style>
+
+            body {
+            <!--text-align: center;-->
+         }
+            h1 {
+            color: black;
+            font-style: italic;
+            width: 100%;
+         }
+
+         #input {
+            <!--background-color: pink;-->
+         }
+
+         #buttons {
+            <!--background-color: indigo;-->
+         }
+
+         #results {
+            background-color: white;
+         }
+
+         .englishLang {
+            display: block;
+         }
+
+         .spanishLang {
+            display: none;
+         }
+
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="englishLang"><h1>TWA Calculator for Asbestos Fibers (F/cc)</h1></div>
+            <div class="spanishLang"><h1>TWA Calculadora para Fibras de Amianto (F/cc)</h1></div>
+            <button id="changeLang" type="button" class="btn btn-outline-success">Espanol</button>
+            <br>
+            <div id="input">
+                <div class="englishLang">1. Minutes:</div><div class="spanishLang">1. Minutos:</div> <input type="text" id="minutesOne" class="inputs" >
+                <div class="englishLang">Exposure(F/cc): </div><div class="spanishLang">Exposición(F/cc): </div><input type="text" id="exOne" class="inputs" >
+                <br><br>
+                <div class="englishLang">2. Minutes:</div><div class="spanishLang">2. Minutos:</div> <input type="text" id="minutesTwo" class="inputs" >
+                <div class="englishLang">Exposure(F/cc): </div><div class="spanishLang">Exposición(F/cc): </div><input type="text" id="exTwo" class="inputs" >
+                <br><br>
+                <div class="englishLang">3. Minutes: </div><div class="spanishLang">3. Minutos: </div><input type="text" id="minutesThree" class="inputs" >
+                <div class="englishLang">Exposure(F/cc): </div><div class="spanishLang">Exposición(F/cc): </div><input type="text" id="exThree" class="inputs" >
+                <br><br>
+                <div class="englishLang">4. Minutes: </div><div class="spanishLang">4. Minutos: </div><input type="text" id="minutesFour" class="inputs" >
+                <div class="englishLang">Exposure(F/cc): </div><div class="spanishLang">Exposición(F/cc): </div><input type="text" id="exFour" class="inputs" >
+                <br><br>
+                <div class="englishLang">5. Minutes: </div><div class="spanishLang">5. Minutos: </div><input type="text" id="minutesFive" class="inputs" >
+                <div class="englishLang">Exposure(F/cc): </div><div class="spanishLang">Exposición(F/cc): </div><input type="text" id="exFive" class="inputs" >
+
+            </div>
+
+            <br><hr><br>
+
+            <div class="row justify-content-center">
+
+                <div class="col col-sm-6 col-md-3" id="results">
+                    <h3 id="totalMin"></h3>
+                    <h3 id="TWV"></h3>
+                </div>
+
+                <br><br><br>
+
+                <div class="col col-sm-6 col-md-3" id="buttons">
+                    <button id="getAnswer" type="button" class="btn btn-primary">Calculate</button>
+                    <button id="clearVals" type="button" class="btn btn-warning">Clear</button>
+                    <!--<button id="changeLang" type="button" class="btn btn-outline-success">Espanol</button>-->
+                </div>
+
+            </div>
+
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--<script src="js/scripts.js"></script>-->
+    <script>
+     function TWA() {
+
+        $('.inputs').each(function(){
+            //If the field's empty
+            if ($(this).val() == '') {
+          $(this).val(0)
+        }
+        })
+
+        var minsOne = $('#minutesOne').val()
+        var conOne = $('#exOne').val()
+        var minsTwo = $('#minutesTwo').val()
+        var conTwo = $('#exTwo').val()
+        var minsThree = $('#minutesThree').val()
+        var conThree = $('#exThree').val()
+        var minsFour = $('#minutesFour').val()
+        var conFour = $('#exFour').val()
+        var minsFive = $('#minutesFive').val()
+        var conFive = $('#exFive').val()
+        var minsSix = $('#minutesSix').val()
+        var conSix = $('#exSix').val()
+        var minsSeven = $('#minutesSeven').val()
+        var conSeven = $('#exSeven').val()
+        var minsEight = $('#minutesEight').val()
+        var conEight = $('#exEight').val()
+
+        var totalMinutes = parseFloat(minsOne) + parseFloat(minsTwo) + parseFloat(minsThree) + parseFloat(minsFour) + parseFloat(minsFive)
+        if (totalMinutes > 480) {
+            totalMinutes = 480
+        }
+
+        var top_of_calc = (minsOne * parseFloat(conOne)) + (minsTwo * parseFloat(conTwo)) + (minsThree * parseFloat(conThree)) + (minsFour * parseFloat(conFour)) + (minsFive * parseFloat(conFive))
+        var TWA = top_of_calc / totalMinutes
+
+        if (isNaN(TWA)) {
+            document.getElementById("totalMin").innerHTML = (document.getElementById("changeLang").innerHTML == "Espanol" ? 'Something is wrong' : 'Algo está mal')
+            document.getElementById("TWV").innerHTML = '';
+        } else if (TWA == 0) {
+            document.getElementById("totalMin").innerHTML = 'No';
+            document.getElementById("TWV").innerHTML = 'Calculation';
+        } else {
+            document.getElementById("totalMin").innerHTML = (document.getElementById("changeLang").innerHTML == "Espanol"? '<b>Total Minutes: <b>' + String(totalMinutes) : '<b>Todo Minutos: <b>' + String(totalMinutes))
+            document.getElementById("TWV").innerHTML = '<b>TWA: <b>' + String(TWA.toFixed(4));
+        }
+
+    }
+
+function clear() {
+    $('.inputs').val('')
+    document.getElementById("totalMin").innerHTML = '';
+    document.getElementById("TWV").innerHTML = '';
+}
+
+function toggleLang() {
+    var eng = $('.englishLang')
+    var spa = $('.spanishLang')
+
+    if(eng[0].style.display == 'block') {
+        eng.each(function(){
+            this.style.display = 'none'
+        })
+        spa.each(function(){
+            this.style.display = 'block'
+        })
+        document.getElementById("changeLang").innerHTML = "English"
+        document.getElementById("clearVals").innerHTML = "Claro"
+        document.getElementById("getAnswer").innerHTML = "Calcular"
+    } else {
+        eng.each(function(){
+            this.style.display = 'block'
+        })
+        spa.each(function(){
+            this.style.display = 'none'
+        })
+        document.getElementById("changeLang").innerHTML = "Espanol"
+        document.getElementById("clearVals").innerHTML = "Clear"
+        document.getElementById("getAnswer").innerHTML = "Calculate"
+    }
+
+
+}
+
+
+
+
+$( document ).ready(function() {
+
+    $('#getAnswer').click(function(){
+        TWA()
+    })
+
+    $('#clearVals').click(function(){
+        clear()
+    })
+
+    $('#changeLang').click(function(){
+        toggleLang()
+    })
+
+
+
+});
+    </script>
+
+    </body>
+{% endblock %}
